@@ -208,6 +208,8 @@ public:
     int lastRenderNo;
     id<MTLEvent> renderEvent;
 
+    std::vector<RendererFrameInfoMTL> offFrameInfos;
+
 private:
     const std::shared_ptr<bool> _isShuttingDown;
 };
