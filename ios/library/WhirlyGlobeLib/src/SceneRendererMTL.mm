@@ -1,9 +1,8 @@
-/*
- *  SceneRendererMTL.mm
+/*  SceneRendererMTL.mm
  *  WhirlyGlobeLib
  *
  *  Created by Steve Gifford on 5/16/19.
- *  Copyright 2011-2019 mousebird consulting
+ *  Copyright 2011-2021 mousebird consulting
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +14,6 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
- *
  */
 
 #import "SceneRendererMTL.h"
@@ -84,9 +82,12 @@ SceneRendererMTL::SceneRendererMTL(id<MTLDevice> mtlDevice,id<MTLLibrary> mtlLib
 {
     offscreenBlendEnable = false;
     indirectRender = false;
-    if (@available(iOS 13.0, *)) {
+    if (@available(iOS 13.0, *))
+    {
         if ([mtlDevice supportsFeatureSet:MTLFeatureSet_iOS_GPUFamily3_v4])
+        {
             indirectRender = true;
+        }
     }
 #if TARGET_OS_SIMULATOR
     indirectRender = false;
@@ -142,16 +143,16 @@ void SceneRendererMTL::setScene(Scene *newScene)
 bool SceneRendererMTL::setup(int sizeX,int sizeY,bool offscreen)
 {
     // Set up a default render target
-    RenderTargetMTLRef defaultTarget = RenderTargetMTLRef(new RenderTargetMTL(EmptyIdentity));
+    RenderTargetMTLRef defaultTarget = std::make_shared<RenderTargetMTL>(EmptyIdentity);
     defaultTarget->width = sizeX;
     defaultTarget->height = sizeY;
-    defaultTarget->clearEveryFrame = true;
+    defaultTarget->clearEveryFrame = false;
     if (offscreen) {
         framebufferWidth = sizeX;
         framebufferHeight = sizeY;
         
         // Create the texture we'll use right here
-        TextureMTLRef fbTexMTL = TextureMTLRef(new TextureMTL("Framebuffer Texture"));
+        TextureMTLRef fbTexMTL = std::make_shared<TextureMTL>("Framebuffer Texture");
         fbTexMTL->setWidth(sizeX);
         fbTexMTL->setHeight(sizeY);
         fbTexMTL->setIsEmptyTexture(true);
@@ -160,7 +161,7 @@ bool SceneRendererMTL::setup(int sizeX,int sizeY,bool offscreen)
         framebufferTex = fbTexMTL;
         
         // And one for depth
-        TextureMTLRef depthTexMTL = TextureMTLRef(new TextureMTL("Framebuffer Depth Texture"));
+        TextureMTLRef depthTexMTL = std::make_shared<TextureMTL>("Framebuffer Depth Texture");
         depthTexMTL->setWidth(sizeX);
         depthTexMTL->setHeight(sizeY);
         depthTexMTL->setIsEmptyTexture(true);
@@ -173,7 +174,7 @@ bool SceneRendererMTL::setup(int sizeX,int sizeY,bool offscreen)
         defaultTarget->setTargetDepthTexture(depthTexMTL.get());
     } else {
         if (sizeX > 0 && sizeY > 0)
-            defaultTarget->init(this,NULL,EmptyIdentity);
+            defaultTarget->init(this,nullptr,EmptyIdentity);
         defaultTarget->blendEnable = true;
     }
     renderTargets.push_back(defaultTarget);
@@ -450,7 +451,7 @@ void SceneRendererMTL::updateWorkGroups(RendererFrameInfo *inFrameInfo)
 
                             id<MTLIndirectRenderCommand> cmdEncode = [drawGroup->indCmdBuff indirectRenderCommandAtIndex:curCommand++];
 
-                            for (auto &frameInfo : offFrameInfos)
+                            auto &frameInfo = *baseFrameInfo;//for (auto &frameInfo : offFrameInfos)
                             {
                                 drawMTL->encodeIndirect(cmdEncode,this,scene,renderTarget.get());
                                 drawMTL->enumerateResources(&frameInfo, drawGroup->resources);
@@ -475,9 +476,9 @@ void SceneRendererMTL::render(TimeInterval duration,
     
     frameCount++;
     
-    TimeInterval now = scene->getCurrentTime();
+    const TimeInterval now = scene->getCurrentTime();
     
-    teardownInfo = NULL;
+    teardownInfo = nullptr;
 
     if (framebufferWidth <= 0 || framebufferHeight <= 0)
     {
@@ -496,35 +497,34 @@ void SceneRendererMTL::render(TimeInterval duration,
 
     // See if we're dealing with a globe or map view
     Maply::MapView *mapView = dynamic_cast<Maply::MapView *>(theView);
-    float overlapMarginX = 0.0;
-    if (mapView) {
-        overlapMarginX = scene->getOverlapMargin();
-    }
+    const float overlapMarginX = mapView ? scene->getOverlapMargin() : 0.0;
 
     if (!theView) {
         return;
     }
-    
+
+    const Point2f frameSize(framebufferWidth,framebufferHeight);
+    const Point2d screenSize = theView->screenSizeInDisplayCoords(frameSize);
+
     // Get the model and view matrices
-    Eigen::Matrix4d modelTrans4d = theView->calcModelMatrix();
-    Eigen::Matrix4d viewTrans4d = theView->calcViewMatrix();
-    Eigen::Matrix4f modelTrans = Matrix4dToMatrix4f(modelTrans4d);
-    Eigen::Matrix4f viewTrans = Matrix4dToMatrix4f(viewTrans4d);
+    const Matrix4d modelTrans4d = theView->calcModelMatrix();
+    const Matrix4d viewTrans4d = theView->calcViewMatrix();
+    const Matrix4f modelTrans = Matrix4dToMatrix4f(modelTrans4d);
+    const Matrix4f viewTrans = Matrix4dToMatrix4f(viewTrans4d);
     
     // Set up a projection matrix
-    const Point2f frameSize(framebufferWidth,framebufferHeight);
-    Eigen::Matrix4d projMat4d = theView->calcProjectionMatrix(frameSize,0.0);
+    const Matrix4d projMat4d = theView->calcProjectionMatrix(frameSize,0.0);
 
-    Eigen::Matrix4d modelAndViewMat4d = viewTrans4d * modelTrans4d;
-    Eigen::Matrix4d pvMat4d = projMat4d * viewTrans4d;
-    Eigen::Matrix4d modelAndViewNormalMat4d = modelAndViewMat4d.inverse().transpose();
-    Eigen::Matrix4d mvpMat4d = projMat4d * modelAndViewMat4d;
+    const Matrix4d modelAndViewMat4d = viewTrans4d * modelTrans4d;
+    const Matrix4d pvMat4d = projMat4d * viewTrans4d;
+    const Matrix4d modelAndViewNormalMat4d = modelAndViewMat4d.inverse().transpose();
+    const Matrix4d mvpMat4d = projMat4d * modelAndViewMat4d;
 
-    Eigen::Matrix4f projMat = Matrix4dToMatrix4f(projMat4d);
-    Eigen::Matrix4f modelAndViewMat = Matrix4dToMatrix4f(modelAndViewMat4d);
-    Eigen::Matrix4f mvpMat = Matrix4dToMatrix4f(mvpMat4d);
-    Eigen::Matrix4f mvpNormalMat4f = Matrix4dToMatrix4f(mvpMat4d.inverse().transpose());
-    Eigen::Matrix4f modelAndViewNormalMat = Matrix4dToMatrix4f(modelAndViewNormalMat4d);
+    const Matrix4f projMat = Matrix4dToMatrix4f(projMat4d);
+    const Matrix4f modelAndViewMat = Matrix4dToMatrix4f(modelAndViewMat4d);
+    const Matrix4f mvpMat = Matrix4dToMatrix4f(mvpMat4d);
+    const Matrix4f mvpNormalMat4f = Matrix4dToMatrix4f(mvpMat4d.inverse().transpose());
+    const Matrix4f modelAndViewNormalMat = Matrix4dToMatrix4f(modelAndViewNormalMat4d);
 
     if (perfInterval > 0)
         perfTimer.stopTiming("Render Setup");
@@ -532,7 +532,7 @@ void SceneRendererMTL::render(TimeInterval duration,
     RenderTargetMTL *defaultTarget = (RenderTargetMTL *)renderTargets.back().get();
     if (renderPassDesc)
         defaultTarget->setRenderPassDesc(renderPassDesc);
-    auto clearColor = defaultTarget->clearColor;
+    const auto &clearColor = defaultTarget->clearColor;
     renderPassDesc.colorAttachments[0].clearColor = MTLClearColorMake(clearColor[0],clearColor[1],clearColor[2],clearColor[3]);
 
     // Send the command buffer and encoders
@@ -553,41 +553,44 @@ void SceneRendererMTL::render(TimeInterval duration,
     baseFrameInfo.projMat4d = projMat4d;
     baseFrameInfo.mvpMat = mvpMat;
     baseFrameInfo.mvpMat4d = mvpMat4d;
-    Eigen::Matrix4f mvpInvMat = mvpMat.inverse();
-    baseFrameInfo.mvpInvMat = mvpInvMat;
+    baseFrameInfo.mvpInvMat = mvpMat.inverse();
     baseFrameInfo.mvpNormalMat = mvpNormalMat4f;
     baseFrameInfo.viewModelNormalMat = modelAndViewNormalMat;
     baseFrameInfo.viewAndModelMat = modelAndViewMat;
     baseFrameInfo.viewAndModelMat4d = modelAndViewMat4d;
-    Matrix4f pvMat4f = Matrix4dToMatrix4f(pvMat4d);
-    baseFrameInfo.pvMat = pvMat4f;
+    baseFrameInfo.pvMat = Matrix4dToMatrix4f(pvMat4d);
     baseFrameInfo.pvMat4d = pvMat4d;
-    theView->getOffsetMatrices(baseFrameInfo.offsetMatrices, frameSize, overlapMarginX);
-    Point2d screenSize = theView->screenSizeInDisplayCoords(frameSize);
     baseFrameInfo.screenSizeInDisplayCoords = screenSize;
     baseFrameInfo.lights = &lights;
-    baseFrameInfo.renderTarget = NULL;
+    baseFrameInfo.renderTarget = nullptr;
+
+    theView->getOffsetMatrices(baseFrameInfo.offsetMatrices, frameSize, overlapMarginX);
 
     // We need a reverse of the eye vector in model space
     // We'll use this to determine what's pointed away
-    Eigen::Matrix4f modelTransInv = modelTrans.inverse();
-    Vector4f eyeVec4 = modelTransInv * Vector4f(0,0,1,0);
-    Vector3f eyeVec3(eyeVec4.x(),eyeVec4.y(),eyeVec4.z());
-    baseFrameInfo.eyeVec = eyeVec3;
-    Eigen::Matrix4f fullTransInv = modelAndViewMat.inverse();
-    Vector4f fullEyeVec4 = fullTransInv * Vector4f(0,0,1,0);
-    Vector3f fullEyeVec3(fullEyeVec4.x(),fullEyeVec4.y(),fullEyeVec4.z());
-    baseFrameInfo.fullEyeVec = -fullEyeVec3;
-    Matrix4d modelTransInv4d = modelTrans4d.inverse();
-    Vector4d eyeVec4d = modelTransInv4d * Vector4d(0,0,1,0.0);
-    baseFrameInfo.heightAboveSurface = theView->heightAboveSurface();
-    if (scene->getCoordAdapter()->isFlat()) {
-        Vector4d eyePos4d = modelTransInv4d * Vector4d(0.0,0.0,0.0,1.0);
-        eyePos4d /= eyePos4d.w();
-        baseFrameInfo.eyePos = Vector3d(eyePos4d.x(),eyePos4d.y(),eyePos4d.z());
-    } else
-        baseFrameInfo.eyePos = Vector3d(eyeVec4d.x(),eyeVec4d.y(),eyeVec4d.z()) * (1.0+baseFrameInfo.heightAboveSurface);
-    
+    {
+        const Eigen::Matrix4f modelTransInv = modelTrans.inverse();
+        const Vector4f eyeVec4 = modelTransInv * Vector4f(0,0,1,0);
+        const Vector3f eyeVec3(eyeVec4.x(),eyeVec4.y(),eyeVec4.z());
+        baseFrameInfo.eyeVec = eyeVec3;
+        const Vector4f fullEyeVec4 = modelAndViewMat.inverse() * Vector4f(0,0,1,0);
+        const Vector3f fullEyeVec3(fullEyeVec4.x(),fullEyeVec4.y(),fullEyeVec4.z());
+        baseFrameInfo.fullEyeVec = -fullEyeVec3;
+        const Matrix4d modelTransInv4d = modelTrans4d.inverse();
+        const Vector4d eyeVec4d = modelTransInv4d * Vector4d(0,0,1,0.0);
+        baseFrameInfo.heightAboveSurface = theView->heightAboveSurface();
+
+        if (scene->getCoordAdapter()->isFlat())
+        {
+            const Vector4d eyePos4d = modelTransInv4d * Vector4d(0.0,0.0,0.0,1.0);
+            baseFrameInfo.eyePos = Vector3d(eyePos4d.x(),eyePos4d.y(),eyePos4d.z()) / eyePos4d.w();
+        }
+        else
+        {
+            baseFrameInfo.eyePos = Vector3d(eyeVec4d.x(),eyeVec4d.y(),eyeVec4d.z()) * (1.0+baseFrameInfo.heightAboveSurface);
+        }
+    }
+
     if (perfInterval > 0)
         perfTimer.startTiming("Scene preprocessing");
     
@@ -608,10 +611,12 @@ void SceneRendererMTL::render(TimeInterval duration,
     
     // Let the active models to their thing
     // That thing had better not take too long
-    auto activeModels = scene->getActiveModels();
-    for (auto activeModel : activeModels) {
+    auto &activeModels = scene->getActiveModels();
+    for (auto &activeModel : activeModels)
+    {
         activeModel->updateForFrame(&baseFrameInfo);
     }
+
     if (perfInterval > 0)
         perfTimer.addCount("Active Models", (int)activeModels.size());
     
@@ -622,46 +627,27 @@ void SceneRendererMTL::render(TimeInterval duration,
         perfTimer.addCount("Scene changes", scene->getNumChangeRequests());
 
     // Work through the available offset matrices (only 1 if we're not wrapping)
-    std::vector<Matrix4d> &offsetMats = baseFrameInfo.offsetMatrices;
-
-    // Turn these drawables in to a vector
-    std::vector<Matrix4d> mvpMats;
-    std::vector<Matrix4d> mvpInvMats;
-    std::vector<Matrix4f> mvpMats4f;
-    std::vector<Matrix4f> mvpInvMats4f;
-    mvpMats.resize(offsetMats.size());
-    mvpInvMats.resize(offsetMats.size());
-    mvpMats4f.resize(offsetMats.size());
-    mvpInvMats4f.resize(offsetMats.size());
+    const std::vector<Matrix4d> &offsetMats = baseFrameInfo.offsetMatrices;
 
     offFrameInfos.clear();
 
-    for (unsigned int off=0;off<offsetMats.size();off++)
+    for (const auto &offMat : offsetMats)
     {
         offFrameInfos.emplace_back(baseFrameInfo);
         RendererFrameInfoMTL &offFrameInfo = offFrameInfos.back();
 
+        const Eigen::Matrix4d projMat4d = theView->calcProjectionMatrix(frameSize,0.0);
+
         // Tweak with the appropriate offset matrix
-        modelAndViewMat4d = viewTrans4d * offsetMats[off] * modelTrans4d;
-        pvMat4d = projMat4d * viewTrans4d * offsetMats[off];
-        modelAndViewMat = Matrix4dToMatrix4f(modelAndViewMat4d);
-        mvpMats[off] = projMat4d * modelAndViewMat4d;
-        mvpInvMats[off] = mvpMats[off].inverse();
-        mvpMats4f[off] = Matrix4dToMatrix4f(mvpMats[off]);
-        mvpInvMats4f[off] = Matrix4dToMatrix4f(mvpInvMats[off]);
-        modelAndViewNormalMat4d = modelAndViewMat4d.inverse().transpose();
-        modelAndViewNormalMat = Matrix4dToMatrix4f(modelAndViewNormalMat4d);
-        offFrameInfo.mvpMat = mvpMats4f[off];
-        offFrameInfo.mvpMat4d = mvpMats[off];
-        offFrameInfo.mvpInvMat = mvpInvMats4f[off];
-        mvpNormalMat4f = Matrix4dToMatrix4f(mvpMats[off].inverse().transpose());
-        offFrameInfo.mvpNormalMat = mvpNormalMat4f;
-        offFrameInfo.viewModelNormalMat = modelAndViewNormalMat;
-        offFrameInfo.viewAndModelMat4d = modelAndViewMat4d;
-        offFrameInfo.viewAndModelMat = modelAndViewMat;
-        Matrix4f pvMat4f = Matrix4dToMatrix4f(pvMat4d);
-        offFrameInfo.pvMat = pvMat4f;
-        offFrameInfo.pvMat4d = pvMat4d;
+        offFrameInfo.viewAndModelMat4d = viewTrans4d * offMat * modelTrans4d;
+        offFrameInfo.viewAndModelMat = offFrameInfo.viewAndModelMat4d.cast<float>();
+        offFrameInfo.viewModelNormalMat = offFrameInfo.viewAndModelMat4d.inverse().transpose().cast<float>();
+        offFrameInfo.mvpMat4d = projMat4d * offFrameInfo.viewAndModelMat4d;
+        offFrameInfo.mvpMat = offFrameInfo.mvpMat4d.cast<float>();
+        offFrameInfo.mvpInvMat = offFrameInfo.mvpMat4d.inverse().cast<float>();
+        offFrameInfo.mvpNormalMat = offFrameInfo.mvpMat4d.inverse().transpose().cast<float>();
+        offFrameInfo.pvMat4d = projMat4d * viewTrans4d * offMat;
+        offFrameInfo.pvMat = offFrameInfo.pvMat4d.cast<float>();
     }
 
     if (perfInterval > 0)
@@ -680,15 +666,23 @@ void SceneRendererMTL::render(TimeInterval duration,
     // Keeps us from stomping on the last frame's uniforms
     if (renderEvent == nil && drawGetter)
         renderEvent = [mtlDevice newEvent];
-    
+
+    id <MTLEvent> offsetRenderedEvent = [mtlDevice newEvent];
+    long long offsetEventValue = 1;
+
     // Workgroups force us to draw things in order
-    for (auto &workGroup : workGroups)
+    bool firstFrame = true;
+    for (int groupIndex = 0; groupIndex < workGroups.size(); ++groupIndex)
     {
+        auto &workGroup = workGroups[groupIndex];
+        
         if (perfInterval > 0)
             perfTimer.startTiming("Work Group: " + workGroup->name);
 
-        for (auto &targetContainer : workGroup->renderTargetContainers)
+        for (int targetIndex = 0; targetIndex < workGroup->renderTargetContainers.size(); ++targetIndex)
         {
+            auto &targetContainer = workGroup->renderTargetContainers[targetIndex];
+
             // We'll skip empty render targets, except for the default one which we need at least to clear
             // Otherwise we get stuck on the last render, rather than a blank screen
             if (targetContainer->drawables.empty() &&
@@ -697,79 +691,48 @@ void SceneRendererMTL::render(TimeInterval duration,
                 continue;
             }
 
-            RenderTargetContainerMTL *targetContainerMTL = (RenderTargetContainerMTL *)targetContainer.get();
-            
-            RenderTargetMTLRef renderTarget;
-            if (!targetContainer->renderTarget) {
-                // Need some sort of render target even if we're not really rendering
-                renderTarget = std::dynamic_pointer_cast<RenderTargetMTL>(renderTargets.back());
-            } else {
-                renderTarget = std::dynamic_pointer_cast<RenderTargetMTL>(targetContainer->renderTarget);
-            }
+            const auto targetContainerMTL = dynamic_cast<RenderTargetContainerMTL*>(targetContainer.get());
+
+            // Need some sort of render target even if we're not really rendering
+            const auto renderTarget = dynamic_cast<RenderTargetMTL*>(
+                (targetContainer->renderTarget ? targetContainer->renderTarget : renderTargets.back()).get());
 
             // Render pass descriptor might change from frame to frame if we're clearing sporadically
             renderTarget->makeRenderPassDesc();
 
-            baseFrameInfo.renderTarget = renderTarget.get();
+            baseFrameInfo.renderTarget = renderTarget;
 
             // Each render target needs its own buffer and command queue
-            if (lastCmdBuff) {
+            if (lastCmdBuff)
+            {
                 // Otherwise we'll commit twice
                 if (drawGetter)
+                {
                     [lastCmdBuff commit];
+                }
                 lastCmdBuff = nil;
             }
-            id<MTLCommandBuffer> cmdBuff = [cmdQueue commandBuffer];
+            const id<MTLCommandBuffer> cmdBuff = [cmdQueue commandBuffer];
 
             // Keeps us from stomping on the last frame's uniforms
             if (lastRenderNo > 0 && drawGetter)
+            {
                 [cmdBuff encodeWaitForEvent:renderEvent value:lastRenderNo];
+            }
 
             // Resources used by this container
             ResourceRefsMTL resources;
 
             for (int offIndex = 0; offIndex < offFrameInfos.size(); ++offIndex)
             {
-                auto &frameInfo = offFrameInfos[offIndex];
-                frameInfo.renderTarget = renderTarget.get();
-
-                MTLScissorRect scissorRect;
-                bool hasScissorRect = false;
-                if (auto thisMapView = dynamic_cast<Maply::MapView*>(frameInfo.theView))
+                if (!firstFrame)
                 {
-                    const GeoCoord geoPts[2] = {
-                        {  M_PI,  M_PI_2 },
-                        { -M_PI, -M_PI_2 },
-                    };
-                    Point2f screenPts[2];
-                    for (int i = 0; i < 2; ++i)
-                    {
-                        const Point3d localPt = thisMapView->coordAdapter->getCoordSystem()->geographicToLocal3d(geoPts[i]);
-                        const Point3d displayPt = thisMapView->coordAdapter->localToDisplay(localPt);
-                        screenPts[i] = thisMapView->pointOnScreenFromPlane(displayPt, &frameInfo.mvpMat4d, frameSize);
-                    }
-
-                    float l = std::min(frameSize.x(), std::max(0.0f, screenPts[0].x()));
-                    float t = std::min(frameSize.y(), std::max(0.0f, screenPts[1].y()));
-                    float r = std::min(frameSize.x(), std::max(0.0f, screenPts[1].x()));
-                    float b = std::min(frameSize.y(), std::max(0.0f, screenPts[0].y()));
-
-                    if (l == r || t == b)
-                    {
-                        wkLog("%d: l=%f, t=%f, r=%f, b=%f (out)", offIndex, l, t, r, b);
-                        continue;
-                    }
-
-                    scissorRect = {
-                        (NSUInteger)l,
-                        (NSUInteger)t,
-                        (NSUInteger)(r-l),
-                        (NSUInteger)(b-t),
-                    };
-                    hasScissorRect = true;
-
-                    wkLog("%d: l=%f, t=%f, r=%f, b=%f", offIndex, l, t, r, b);
+                    // Wait for the previous offset to finish
+                    [cmdBuff encodeWaitForEvent:offsetRenderedEvent value:offsetEventValue];
                 }
+
+                auto &frameInfo = offFrameInfos[offIndex];
+                frameInfo.renderTarget = renderTarget;
 
                 // Ask all the drawables to set themselves up.  Mostly memory stuff.
                 id<MTLFence> preProcessFence = [mtlDevice newFence];
@@ -848,20 +811,18 @@ void SceneRendererMTL::render(TimeInterval duration,
                     {
                         frameInfo.renderPassDesc = renderTarget->getRenderPassDesc(level);
                     }
-                    
-                    if (offIndex > 0)
-                    {
-                        // Don't clear on offset matrices
-                        frameInfo.renderPassDesc.colorAttachments[0].loadAction =  MTLLoadActionLoad;
-                    }
+
+                    const bool lastFrame = (offIndex == offFrameInfos.size() - 1 && level == numLevels - 1 && groupIndex == workGroups.size() - 1);
+
+                    frameInfo.renderPassDesc.colorAttachments[0].loadAction = firstFrame ? MTLLoadActionClear : MTLLoadActionLoad;
+                    frameInfo.renderPassDesc.colorAttachments[0].storeAction =  lastFrame ? MTLStoreActionDontCare : MTLStoreActionStore;
+                    frameInfo.renderPassDesc.depthAttachment.loadAction = firstFrame ? MTLLoadActionClear : MTLLoadActionLoad;
+                    frameInfo.renderPassDesc.depthAttachment.storeAction = lastFrame ? MTLStoreActionDontCare : MTLStoreActionStore;
+                    frameInfo.renderPassDesc.depthAttachment.clearDepth = 1.0f;
+                    frameInfo.renderPassDesc.stencilAttachment.loadAction = firstFrame ? MTLLoadActionClear : MTLLoadActionLoad;
+                    frameInfo.renderPassDesc.stencilAttachment.storeAction =  lastFrame ? MTLStoreActionDontCare : MTLStoreActionStore;
 
                     cmdEncode = [cmdBuff renderCommandEncoderWithDescriptor:frameInfo.renderPassDesc];
-                    [cmdEncode waitForFence:preProcessFence beforeStages:MTLRenderStageVertex];
-
-                    if (hasScissorRect)
-                    {
-                        [cmdEncode setScissorRect:scissorRect];
-                    }
 
                     resources.use(cmdEncode);
 
@@ -983,6 +944,13 @@ void SceneRendererMTL::render(TimeInterval duration,
                     }
 
                     [cmdEncode endEncoding];
+                    cmdEncode = nil;
+
+                    // Signal completion
+                    offsetEventValue += 1;
+                    [cmdBuff encodeSignalEvent:offsetRenderedEvent value:offsetEventValue];
+
+                    firstFrame = false;
                 }
             }
 
