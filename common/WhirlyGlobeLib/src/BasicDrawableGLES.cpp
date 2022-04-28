@@ -178,7 +178,9 @@ void BasicDrawableGLES::setupForRenderer(const RenderSetupInfo *inSetupInfo,Scen
         }
         if (numTris)
         {
-            triBuffer = setupInfo->memManager->getBufferID(triBufSize, GL_STATIC_DRAW);
+            // Note that we must pass zero for size here in the non-sharing case, or the buffer
+            // will be set up as a vertex buffer and will then not work as an element buffer.
+            triBuffer = setupInfo->memManager->getBufferID(0);
             if (triBuffer == 0)
             {
                 setupInfo->memManager->removeBufferID(pointBuffer);
@@ -764,10 +766,6 @@ void BasicDrawableGLES::draw(RendererFrameInfoGLES *frameInfo,Scene *inScene)
             {
                 glDisableVertexAttribArray(attr->index);
             }
-        }
-        if (boundElements)
-        {
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
         if (sharedBuffer || pointBuffer)
         {

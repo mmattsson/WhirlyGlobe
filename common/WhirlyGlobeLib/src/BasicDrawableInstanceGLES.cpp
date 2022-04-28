@@ -677,22 +677,17 @@ void BasicDrawableInstanceGLES::draw(RendererFrameInfoGLES *frameInfo,Scene *inS
             if (vertAttr)
             {
                 glDisableVertexAttribArray(vertAttr->index);
-                //            WHIRLYKIT_LOGD("BasicDrawable glDisableVertexAttribArray %d",vertAttr->index);
             }
             for (unsigned int ii=0;ii<basicDrawGL->vertexAttributes.size();ii++)
+            {
                 if (progAttrs[ii])
                 {
                     glDisableVertexAttribArray(progAttrs[ii]->index);
-                    //                WHIRLYKIT_LOGD("BasicDrawable glDisableVertexAttribArray %d",progAttrs[ii]->index);
                 }
-            if (boundElements) {
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-                //            WHIRLYKIT_LOGD("BasicDrawable glBindBuffer 0");
             }
             if (basicDrawGL->sharedBuffer)
             {
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
-                //            WHIRLYKIT_LOGD("BasicDrawable glBindBuffer 0");
             }
         }
     }
