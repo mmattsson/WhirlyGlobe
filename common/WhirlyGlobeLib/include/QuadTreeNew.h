@@ -75,9 +75,8 @@ public:
     virtual ~QuadTreeNew() = default;
     
     // Single node in the Quad Tree
-    class Node
+    struct Node
     {
-    public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
         Node() = default;
@@ -107,9 +106,8 @@ public:
     typedef std::set<Node> NodeSet;
 
     // Node with an importance
-    class ImportantNode : public Node
+    struct ImportantNode : public Node
     {
-    public:
         ImportantNode() : importance(0.0) { }
         ImportantNode(const ImportantNode &that) : Node((Node)that), importance(that.importance) { }
         ImportantNode(const Node &that,double import) : Node((Node)that), importance(import) { }

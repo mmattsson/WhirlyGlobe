@@ -281,7 +281,7 @@ using namespace Eigen;
     SceneRendererMTLRef sceneRendererMTL = std::dynamic_pointer_cast<SceneRendererMTL>(sceneRenderer);
     
     sceneRendererMTL->forceDrawNextFrame();
-    sceneRendererMTL->render(1.0/60.0,nil,nil);
+    sceneRendererMTL->render(1.0/60.0,nil);
     RawDataRef dataRef = sceneRendererMTL->getSnapshot(EmptyIdentity);
     RawNSDataReaderRef rawData = std::dynamic_pointer_cast<RawNSDataReader>(dataRef);
     if (rawData)
