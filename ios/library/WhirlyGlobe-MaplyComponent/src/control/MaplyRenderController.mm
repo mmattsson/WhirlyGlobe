@@ -121,7 +121,9 @@ using namespace Eigen;
             [interactLayer teardown];
     }
     
+#if !MAPLY_MINIMAL
     defaultClusterGenerator = nil;
+#endif //!MAPLY_MINIMAL
 
     if (baseLayerThread)
     {
@@ -155,10 +157,13 @@ using namespace Eigen;
     sceneRenderer = nil;
     
     layerThreads = nil;
-    //    NSLog(@"BaseViewController: Layers shut down");
+#if !MAPLY_MINIMAL
     fontTexManager = NULL;
+#endif //!MAPLY_MINIMAL
     baseLayerThread = nil;
+#if !MAPLY_MINIMAL
     layoutLayer = nil;
+#endif //!MAPLY_MINIMAL
 
     activeObjects = nil;
     
@@ -213,9 +218,11 @@ using namespace Eigen;
     sceneRenderer->setScene(scene);
 
     // Set up a Font Texture Manager
+#if !MAPLY_MINIMAL
     fontTexManager = std::make_shared<FontTextureManager_iOS>(sceneRenderer.get(),scene);
     scene->setFontTextureManager(fontTexManager);
-    
+#endif //!MAPLY_MINIMAL
+
     layerThreads = [NSMutableArray array];
     
     // Need a layer thread to manage the layers
@@ -223,9 +230,11 @@ using namespace Eigen;
     [layerThreads addObject:baseLayerThread];
     
     // Layout still needs a layer to kick it off
+#if !MAPLY_MINIMAL
     layoutLayer = [[WhirlyKitLayoutLayer alloc] initWithRenderer:sceneRenderer.get()];
     [baseLayerThread addLayer:layoutLayer];
-    
+#endif //!MAPLY_MINIMAL
+
     if (newInteractLayer) {
         interactLayer = newInteractLayer;
         interactLayer.screenObjectDrawPriorityOffset = [self screenObjectDrawPriorityOffset];
@@ -241,8 +250,10 @@ using namespace Eigen;
     [baseLayerThread start];
     
     // Default cluster generator
+#if !MAPLY_MINIMAL
     defaultClusterGenerator = [[MaplyBasicClusterGenerator alloc] initWithColors:@[[UIColor orangeColor]] clusterNumber:0 size:CGSizeMake(32,32) viewC:self];
     [self addClusterGenerator:defaultClusterGenerator];
+#endif //!MAPLY_MINIMAL
 
     interactLayer->layerThreads = layerThreads;
     [baseLayerThread addLayer:interactLayer];
@@ -1271,7 +1282,9 @@ using namespace Eigen;
 
 - (void)runLayout
 {
+#if !MAPLY_MINIMAL
     [layoutLayer scheduleUpdateNow];
+#endif //!MAPLY_MINIMAL
 }
 
 - (id<MTLDevice>)getMetalDevice

@@ -19,36 +19,40 @@
  */
 
 #import "MaplyBaseInteractionLayer_private.h"
-#import "visual_objects/MaplyScreenMarker.h"
-#import "visual_objects/MaplyMarker.h"
-#import "visual_objects/MaplyScreenLabel.h"
-#import "visual_objects/MaplyLabel.h"
-#import "MaplyVectorObject_private.h"
-#import "visual_objects/MaplyShape.h"
-#import "visual_objects/MaplySticker.h"
-#import "visual_objects/MaplyBillboard.h"
 #import "math/MaplyCoordinate.h"
 #import "ImageTexture_private.h"
 #import "MaplySharedAttributes.h"
 #import "MaplyCoordinateSystem_private.h"
 #import "MaplyTexture_private.h"
 #import "MaplyMatrix_private.h"
-#import "MaplyGeomModel_private.h"
-#import "MaplyScreenObject_private.h"
 #import "MaplyVertexAttribute_private.h"
-#import "MaplyParticleSystem_private.h"
 #import "MaplyShape_private.h"
-#import "MaplyPoints_private.h"
 #import "MaplyRenderTarget_private.h"
 #import "Dictionary_NSDictionary.h"
-#import "SingleLabel_iOS.h"
-#import "FontTextureManager_iOS.h"
-#import "ComponentManager_iOS.h"
-#import "SphericalEarthChunkManager.h"
 #import "UIColor+Stuff.h"
 #import "NSDictionary+Stuff.h"
 #import "MaplyBaseViewController_private.h"
 #import "WorkRegion_private.h"
+#import "ComponentManager_iOS.h"
+#import "MaplyComponentObject_private.h"
+
+#if !MAPLY_MINIMAL
+# import "visual_objects/MaplyScreenMarker.h"
+# import "visual_objects/MaplyMarker.h"
+# import "visual_objects/MaplyScreenLabel.h"
+# import "visual_objects/MaplyLabel.h"
+# import "visual_objects/MaplyShape.h"
+# import "visual_objects/MaplySticker.h"
+# import "visual_objects/MaplyBillboard.h"
+# import "MaplyPoints_private.h"
+# import "MaplyGeomModel_private.h"
+# import "MaplyScreenObject_private.h"
+# import "MaplyVectorObject_private.h"
+# import "MaplyParticleSystem_private.h"
+# import "SingleLabel_iOS.h"
+# import "FontTextureManager_iOS.h"
+# import "SphericalEarthChunkManager.h"
+#endif //!MAPLY_MINIMAL
 
 #import <unordered_set>
 
@@ -124,10 +128,12 @@ public:
     std::mutex workLock;
     std::condition_variable workWait;
     int numActiveWorkers;
+#if !MAPLY_MINIMAL
     ClusterGenMap clusterGens;
     OurClusterGenerator ourClusterGen;
     // Last frame (layout frame, not screen frame)
     std::vector<MaplyTexture *> currentClusterTex,oldClusterTex;
+#endif //!MAPLY_MINIMAL
     bool offlineMode;
         
     // Pre-fetched IDs for the various programs
@@ -184,13 +190,15 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
     atlasGroup = [[MaplyTextureAtlasGroup alloc] initWithScene:scene sceneRender:sceneRender];
 
+#if !MAPLY_MINIMAL
     if (inLayerThread)
     {
         setupInfo = inLayerThread.renderer->getRenderSetupInfo();
         ourClusterGen.layer = self;
         compManager->layoutManager->addClusterGenerator(nullptr,&ourClusterGen);
     }
-    
+#endif //!MAPLY_MINIMAL
+
     // We locked these in hopes of slowing down anyone trying to race us.  Unlock 'em.
     imageLock.unlock();
     changeLock.unlock();
@@ -204,8 +212,10 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     imageTextures.clear();
     atlasGroup = nil;
     layerThreads = nil;
+#if !MAPLY_MINIMAL
     ourClusterGen.layer = nil;
     clusterGens.clear();
+#endif //!MAPLY_MINIMAL
     compManager->clear();
     
     for (MaplyShader *shader in shaders)
@@ -763,6 +773,8 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     }
 }
 
+#if !MAPLY_MINIMAL
+
 // Remap the mask strings to IDs
 - (void)resolveMaskIDs:(NSMutableDictionary *)desc compObj:(MaplyComponentObject *)compObj
 {
@@ -1139,6 +1151,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             [it->second endClusterGroup];
     }
 }
+#endif //!MAPLY_MINIMAL
 
 - (SimpleIdentity) getProgramID:(NSString *)name
 {
@@ -1153,6 +1166,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     return EmptyIdentity;
 }
 
+#if !MAPLY_MINIMAL
 - (void) clusterID:(SimpleIdentity)clusterID params:(ClusterGenerator::ClusterClassParams &)params
 {
     NSObject <MaplyClusterGenerator> *clusterGen = nil;
@@ -2050,6 +2064,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             break;
     }
 }
+#endif //!MAPLY_MINIMAL
 
 // Called in the layer thread
 - (void)addShapesRun:(NSArray *)argArray
@@ -2181,6 +2196,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             ourShapes.push_back(newEx);
         }
         
+#if !MAPLY_MINIMAL
         // Handle selection
         if (baseShape && shape.selectable)
         {
@@ -2189,6 +2205,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             compManager->addSelectObject(baseShape->selectID,shape);
             compObj->contents->selectIDs.insert(baseShape->selectID);
         }
+#endif //!MAPLY_MINIMAL
     }
 
     compObj->contents->texs = textures;
@@ -2245,6 +2262,8 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     
     return compObj;
 }
+
+#if !MAPLY_MINIMAL
 
 // Used to put geometry models with instances so we can group them
 class GeomModelInstances
@@ -3239,6 +3258,7 @@ typedef std::set<GeomModelInstances *,struct GeomModelInstancesCmp> GeomModelIns
     
     return compObj;
 }
+#endif //!MAPLY_MINIMAL
 
 // Add a render target to the renderer
 - (void)addRenderTarget:(MaplyRenderTarget *)renderTarget
@@ -3634,6 +3654,7 @@ typedef std::set<GeomModelInstances *,struct GeomModelInstancesCmp> GeomModelIns
 }
 
 
+#if !MAPLY_MINIMAL
 // Search for a point inside any of our vector objects
 // Runs in layer thread
 - (NSArray *)findVectorsInPoint:(Point2f)pt inView:(MaplyBaseViewController *)vc multi:(bool)multi
@@ -3714,13 +3735,16 @@ typedef std::set<GeomModelInstances *,struct GeomModelInstancesCmp> GeomModelIns
     
     return retSelectArr;
 }
+#endif //!MAPLY_MINIMAL
 
 - (void)dumpStats
 {
     if (compManager)
         compManager->dumpStats();
     
+#if !MAPLY_MINIMAL
     [atlasGroup dumpStats];
+#endif //!MAPLY_MINIMAL
 }
 
 @end

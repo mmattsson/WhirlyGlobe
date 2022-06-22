@@ -23,10 +23,14 @@
 #import "MaplyRenderController_private.h"
 #import "MaplyQuadSampler_private.h"
 #import "MaplyRenderTarget_private.h"
-#import "visual_objects/MaplyScreenLabel.h"
 #import "MaplyRenderTarget_private.h"
 #import "MaplyRenderController_private.h"
 #import "MaplyQuadSampler_private.h"
+#import "MaplyComponentObject_private.h"
+
+#if !MAPLY_MINIMAL
+#import "visual_objects/MaplyScreenLabel.h"
+#endif //!MAPLY_MINIMAL
 
 using namespace WhirlyKit;
 
@@ -148,6 +152,7 @@ using namespace WhirlyKit;
 
 @end
 
+#if !MAPLY_MINIMAL
 @implementation MaplyOvlDebugImageLoaderInterpreter
 {
     NSObject<MaplyRenderControllerProtocol>* __weak viewC;
@@ -198,6 +203,7 @@ using namespace WhirlyKit;
 }
 
 @end
+#endif //!MAPLY_MINIMAL
 
 @implementation MaplyRawPNGImageLoaderInterpreter
 {

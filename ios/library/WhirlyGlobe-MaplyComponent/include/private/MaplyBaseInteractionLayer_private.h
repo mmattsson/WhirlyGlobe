@@ -17,13 +17,17 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <set>
-#import <WhirlyGlobe_iOS.h>
-#import "MaplyComponentObject_private.h"
 #import "ImageTexture_private.h"
 #import "control/MaplyBaseViewController.h"
 #import "MaplyTextureAtlas_private.h"
 #import "ComponentManager_iOS.h"
+
+#if !MAPLY_MINIMAL
+#import "WhirlyGlobe_iOS.h"
+#import "MaplyComponentObject_private.h"
+#endif //!MAPLY_MINIMAL
+
+#import <set>
 
 @interface MaplyBaseInteractionLayer : NSObject<WhirlyKitLayer>
 {

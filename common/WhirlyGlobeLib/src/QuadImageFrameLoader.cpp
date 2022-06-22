@@ -17,6 +17,7 @@
  */
 
 #import "QuadImageFrameLoader.h"
+#import "BasicDrawableInstanceBuilder.h"
 #import "WhirlyKitLog.h"
 
 namespace WhirlyKit

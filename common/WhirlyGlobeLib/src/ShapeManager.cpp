@@ -18,7 +18,6 @@
 #import "ShapeManager.h"
 #import "GlobeMath.h"
 #import "ShapeDrawableBuilder.h"
-#import "SelectionManager.h"
 #import <set>
 #import <vector>
 #import "Identifiable.h"
@@ -26,6 +25,10 @@
 #import "Tesselator.h"
 #import "GeometryManager.h"
 #import "FlatMath.h"
+
+#if !MAPLY_MINIMAL
+# import "SelectionManager.h"
+#endif //!MAPLY_MINIMAL
 
 using namespace Eigen;
 using namespace WhirlyKit;
@@ -40,6 +43,7 @@ void ShapeSceneRep::enableContents(const SelectionManagerRef &selectManager, boo
     {
         changes.push_back(new OnOffChangeRequest(idIt, enable));
     }
+#if !MAPLY_MINIMAL
     if (selectManager)
     {
         for (const SimpleIdentity it : selectIDs)
@@ -47,6 +51,7 @@ void ShapeSceneRep::enableContents(const SelectionManagerRef &selectManager, boo
             selectManager->enableSelectable(it, enable);
         }
     }
+#endif //!MAPLY_MINIMAL
 }
 
 void ShapeSceneRep::clearContents(const SelectionManagerRef &selectManager, ChangeSet &changes,TimeInterval when)
@@ -55,6 +60,7 @@ void ShapeSceneRep::clearContents(const SelectionManagerRef &selectManager, Chan
     {
         changes.push_back(new RemDrawableReq(idIt,when));
     }
+#if !MAPLY_MINIMAL
     if (selectManager)
     {
         for (const SimpleIdentity it : selectIDs)
@@ -62,6 +68,7 @@ void ShapeSceneRep::clearContents(const SelectionManagerRef &selectManager, Chan
             selectManager->removeSelectable(it);
         }
     }
+#endif //!MAPLY_MINIMAL
 }
 
 Shape::Shape()
@@ -154,6 +161,7 @@ void Circle::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
     triBuilder->addConvexOutline(samples,norm,theColor,shapeMbr);
     
     // Add a selection region
+#if !MAPLY_MINIMAL
     if (isSelectable && selectManager && sceneRep)
     {
         Point3d pts[8];
@@ -171,8 +179,9 @@ void Circle::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                               regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
+#endif //!MAPLY_MINIMAL
 }
-    
+
 Sphere::Sphere()
     : loc(0,0), height(0.0), radius(0.0), sampleX(10), sampleY(10)
 {
@@ -262,6 +271,7 @@ void Sphere::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
 
     triBuilder->addTriangles(locs,norms,colors,tris);
 
+#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -281,6 +291,7 @@ void Sphere::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                               regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
+#endif //!MAPLY_MINIMAL
 }
     
 Cylinder::Cylinder()
@@ -376,6 +387,7 @@ void Cylinder::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
     
     circleSamples.clear();
     
+#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -395,6 +407,7 @@ void Cylinder::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
                                               triBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
+#endif //!MAPLY_MINIMAL
 }
     
 Linear::Linear()
@@ -413,6 +426,7 @@ void Linear::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
 {
     auto theColor = useColor ? color : regBuilder->getShapeInfo()->color;
 
+#if !MAPLY_MINIMAL
     if (isSelectable)
     {
         selectManager->addSelectableLinear(selectID,pts,
@@ -421,7 +435,8 @@ void Linear::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                            regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-    
+#endif //!MAPLY_MINIMAL
+
     regBuilder->addPoints(pts, theColor, mbr, lineWidth, false);
 }
     
@@ -545,6 +560,7 @@ void Extruded::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
         triBuilder->addConvexOutline(locPts, thisNorm, theColor, shapeMbr);
     }
     
+#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -554,7 +570,7 @@ void Extruded::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
                                    triBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-
+#endif //!MAPLY_MINIMAL
 }
 
 Rectangle::Rectangle()
@@ -632,7 +648,8 @@ ShapeManager::~ShapeManager()
     }
     shapeReps.clear();
 }
-    
+
+#if !MAPLY_MINIMAL
 void ShapeManager::convertShape(Shape &shape,std::vector<WhirlyKit::GeometryRaw> &rawGeom)
 {
     ShapeInfo shapeInfo;
@@ -685,6 +702,7 @@ void ShapeManager::convertShape(Shape &shape,std::vector<WhirlyKit::GeometryRaw>
         }
     }
 }
+#endif //!MAPLY_MINIMAL
 
 /// Add an array of shapes.  The returned ID can be used to remove or modify the group of shapes.
 SimpleIdentity ShapeManager::addShapes(const std::vector<Shape*> &shapes, const ShapeInfo &shapeInfo, ChangeSet &changes)
