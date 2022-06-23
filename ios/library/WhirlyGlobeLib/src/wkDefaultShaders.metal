@@ -668,6 +668,8 @@ struct TriWideArgBufferA {
     bool hasTextures;
 };
 
+#if !MAPLY_MINIMAL
+
 // Default wide vector program
 vertex ProjVertexTriWideVec vertexTri_wideVec(
             VertexTriWideVec vert [[stage_in]],
@@ -1776,3 +1778,5 @@ fragment float4 fragmentStars(ProjVertexTriB vert [[stage_in]],
         return vert.color;
     }
 }
+
+#endif //!MAPLY_MINIMAL
