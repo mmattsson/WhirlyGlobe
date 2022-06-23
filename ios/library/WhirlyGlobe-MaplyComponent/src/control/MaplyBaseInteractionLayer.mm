@@ -188,9 +188,9 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
     compManager = scene->getManager<ComponentManager_iOS>(kWKComponentManager);
 
+#if !MAPLY_MINIMAL
     atlasGroup = [[MaplyTextureAtlasGroup alloc] initWithScene:scene sceneRender:sceneRender];
 
-#if !MAPLY_MINIMAL
     if (inLayerThread)
     {
         setupInfo = inLayerThread.renderer->getRenderSetupInfo();
@@ -210,9 +210,9 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     layerThread = nil;
     scene = NULL;
     imageTextures.clear();
-    atlasGroup = nil;
     layerThreads = nil;
 #if !MAPLY_MINIMAL
+    atlasGroup = nil;
     ourClusterGen.layer = nil;
     clusterGens.clear();
 #endif //!MAPLY_MINIMAL
@@ -423,12 +423,14 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             imageTextures.erase(rem);
     }
 
+#if !MAPLY_MINIMAL
     // Takes the altas path instead
     if (!maplyTex && image && [desc boolForKey:kMaplyTexAtlas default:false])
     {
         return [self addTextureToAtlas:image desc:desc mode:threadMode];
     }
-    
+#endif //!MAPLY_MINIMAL
+
     if (!maplyTex)
     {
         std::lock_guard<std::mutex> guardLock(imageLock);
@@ -451,6 +453,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     return maplyTex;
 }
 
+#if !MAPLY_MINIMAL
 - (MaplyTexture *)addTextureToAtlas:(UIImage *)image desc:(NSDictionary *)desc mode:(MaplyThreadMode)threadMode
 {
     threadMode = [self resolveThreadMode:threadMode];
@@ -533,6 +536,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
     return newTex;
 }
+#endif //!MAPLY_MINIMAL
 
 - (void)removeTextures:(NSArray *)textures mode:(MaplyThreadMode)threadMode
 {
@@ -552,11 +556,13 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
     if (tex.isSubTex)
     {
+#if !MAPLY_MINIMAL
         if (atlasGroup)
         {
             [atlasGroup removeTexture:tex.texID changes:changes when:when];
             scene->removeSubTexture(tex.texID);
         }
+#endif //!MAPLY_MINIMAL
     } else {
         if (scene)
             changes.push_back(new RemTextureReq(tex.texID));
@@ -1123,9 +1129,11 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     currentClusterTex.push_back(maplyTex);
     if (maplyTex.isSubTex)
     {
+#if !MAPLY_MINIMAL
         SubTexture subTex = scene->getSubTexture(maplyTex.texID);
         subTex.processTexCoords(smGeom.texCoords);
         smGeom.texIDs.push_back(subTex.texId);
+#endif //!MAPLY_MINIMAL
     } else
         smGeom.texIDs.push_back(maplyTex.texID);
 

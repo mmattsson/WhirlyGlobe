@@ -37,7 +37,9 @@
 namespace WhirlyKit
 {
 using namespace detail;
-    
+
+#if !MAPLY_MINIMAL
+
 VectorObject::VectorObject()
     : VectorObject(10)
 {
@@ -1806,7 +1808,9 @@ VectorObjectRef VectorObject::clipToMbr(const Point2d &ll,const Point2d &ur)
 
     return newVec;
 }
- 
+
+#endif //!MAPLY_MINIMAL
+
 void SampleGreatCircle(const Point2d &startPt,const Point2d &endPt,double height,Point3dVector &pts,
                        const WhirlyKit::CoordSystemDisplayAdapter *coordAdapter,double eps)
 {

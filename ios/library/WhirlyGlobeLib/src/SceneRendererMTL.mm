@@ -1114,12 +1114,20 @@ BasicDrawableInstanceBuilderRef SceneRendererMTL::makeBasicDrawableInstanceBuild
 
 BillboardDrawableBuilderRef SceneRendererMTL::makeBillboardDrawableBuilder(const std::string &name) const
 {
+#if !MAPLY_MINIMAL
     return std::make_shared<BillboardDrawableBuilderMTL>(name,scene);
+#else
+    return nullptr;
+#endif //!MAPLY_MINIMAL
 }
 
 ScreenSpaceDrawableBuilderRef SceneRendererMTL::makeScreenSpaceDrawableBuilder(const std::string &name) const
 {
+#if !MAPLY_MINIMAL
     return std::make_shared<ScreenSpaceDrawableBuilderMTL>(name,scene);
+#else
+    return nullptr;
+#endif //!MAPLY_MINIMAL
 }
 
 ParticleSystemDrawableBuilderRef  SceneRendererMTL::makeParticleSystemDrawableBuilder(const std::string &name) const
@@ -1129,7 +1137,11 @@ ParticleSystemDrawableBuilderRef  SceneRendererMTL::makeParticleSystemDrawableBu
 
 WideVectorDrawableBuilderRef SceneRendererMTL::makeWideVectorDrawableBuilder(const std::string &name) const
 {
+#if !MAPLY_MINIMAL
     return std::make_shared<WideVectorDrawableBuilderMTL>(name,this,scene);
+#else
+    return nullptr;
+#endif //!MAPLY_MINIMAL
 }
 
 RenderTargetRef SceneRendererMTL::makeRenderTarget() const
@@ -1139,7 +1151,11 @@ RenderTargetRef SceneRendererMTL::makeRenderTarget() const
 
 DynamicTextureRef SceneRendererMTL::makeDynamicTexture(const std::string &name) const
 {
+#if !MAPLY_MINIMAL
     return std::make_shared<DynamicTextureMTL>(name);
+#else
+    return nullptr;
+#endif //!MAPLY_MINIMAL
 }
 
 

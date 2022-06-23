@@ -649,7 +649,9 @@ void ComponentManager::releaseMaskIDs(const SimpleIDSet &maskIDs)
         }
     }
 }
-    
+
+#if !MAPLY_MINIMAL
+
 std::vector<std::pair<ComponentObjectRef,VectorObjectRef>> ComponentManager::findVectors(
         const Point2d &pt,double maxDist,const ViewStateRef &viewState,
         const Point2f &frameSize,int resultLimit)
@@ -697,5 +699,7 @@ std::vector<std::pair<ComponentObjectRef,VectorObjectRef>> ComponentManager::fin
     
     return rets;
 }
+
+#endif //!MAPLY_MINIMAL
 
 }
