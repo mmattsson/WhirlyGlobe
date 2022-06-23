@@ -48,6 +48,7 @@
     
     UIView<WhirlyKitViewWrapper> *wrapView;
         
+#if !MAPLY_MINIMAL
     // List of views we're tracking for location
     NSMutableArray *viewTrackers;
     
@@ -56,7 +57,8 @@
     
     /// View Placement logic used to move annotations around
     WhirlyKit::ViewPlacementActiveModelRef viewPlacementModel;
-                
+#endif //!MAPLY_MINIMAL
+
     /// Set if we're dumping out performance output
     bool _performanceOutput;
     
