@@ -301,6 +301,7 @@ using namespace Eigen;
     return toRet;
 }
 
+#if !MAPLY_MINIMAL
 - (void)clearLights
 {
     lights = nil;
@@ -364,6 +365,7 @@ using namespace Eigen;
     }
     sceneRenderer->replaceLights(newLights);
 }
+#endif //!MAPLY_MINIMAL
 
 - (void)addShaderProgram:(MaplyShader *__nonnull)shader
 {

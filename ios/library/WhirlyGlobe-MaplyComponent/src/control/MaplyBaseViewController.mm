@@ -267,7 +267,12 @@ using namespace WhirlyKit;
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody:[postArgs dataUsingEncoding:NSASCIIStringEncoding]];
     
+#if !MAPLY_MINIMAL
     NSURLSession *session = [[MaplyURLSessionManager sharedManager] createURLSession];
+#else
+    NSURLSession *session = [NSURLSession sharedSession];
+#endif //!MAPLY_MINIMAL
+
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         TimeInterval now = TimeGetCurrent();
         NSHTTPURLResponse *resp = (NSHTTPURLResponse *)response;
@@ -515,7 +520,7 @@ static const float PerfOutputDelay = 15.0;
     }
     NSLog(@"Sampling layers: %lu",renderControl->samplingLayers.size());
     
-    [self performSelector:@selector(periodicPerfOutput) withObject:nil afterDelay:PerfOutputDelay];    
+    [self performSelector:@selector(periodicPerfOutput) withObject:nil afterDelay:PerfOutputDelay];
 }
 
 - (bool)performanceOutput
@@ -523,6 +528,7 @@ static const float PerfOutputDelay = 15.0;
     return _performanceOutput;
 }
 
+#if !MAPLY_MINIMAL
 // Build an array of lights and send them down all at once
 - (void)updateLights
 {
@@ -548,6 +554,7 @@ static const float PerfOutputDelay = 15.0;
 {
     [renderControl removeLight:light];
 }
+#endif //!MAPLY_MINIMAL
 
 - (void)addShaderProgram:(MaplyShader *)shader
 {

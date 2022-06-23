@@ -307,6 +307,7 @@ struct MaplyViewControllerAnimationWrapper : public Maply::MapViewAnimationDeleg
 
 - (void) loadSetup_lighting
 {
+#if !MAPLY_MINIMAL
     NSString *lightingType = renderControl->hints[kWGRendererLightingMode];
     int lightingRegular = true;
     if ([lightingType respondsToSelector:@selector(compare:)])
@@ -331,6 +332,7 @@ struct MaplyViewControllerAnimationWrapper : public Maply::MapViewAnimationDeleg
         light.viewDependent = false;
         [self addLight:light];
     }
+#endif //!MAPLY_MINIMAL
 }
 
 - (ViewRef) loadSetup_view

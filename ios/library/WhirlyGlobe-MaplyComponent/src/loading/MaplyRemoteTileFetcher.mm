@@ -419,7 +419,14 @@ using namespace WhirlyKit;
     _numConnections = numConnections;
     // All the internal work is done on a single queue.  Nothing significant, really.
     queue = dispatch_queue_create("MaplyRemoteTileFetcher", DISPATCH_QUEUE_SERIAL);
+    
+    
+#if !MAPLY_MINIMAL
     session = [[MaplyURLSessionManager sharedManager] createURLSession];
+#else
+    session = [NSURLSession sharedSession];
+#endif //!MAPLY_MINIMAL
+
     allStats = [[MaplyRemoteTileFetcherStats alloc] initWithFetcher:self];
     recentStats = [[MaplyRemoteTileFetcherStats alloc] initWithFetcher:self];
             

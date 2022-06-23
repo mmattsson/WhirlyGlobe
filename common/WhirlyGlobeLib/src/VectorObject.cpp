@@ -25,20 +25,14 @@
 #import "GlobeView.h"
 #import "MaplyView.h"
 
-#if !MAPLY_MINIMAL
-# import "ShapeReader.h"
-# import "GeographicLib/Geocentric.hpp"
-# import "GeographicLib/Geodesic.hpp"
-# import "GeographicLib.h"
-#else
-# import <stdexcept>
-#endif
+#import "ShapeReader.h"
+#import "GeographicLib/Geocentric.hpp"
+#import "GeographicLib/Geodesic.hpp"
+#import "GeographicLib.h"
 
 namespace WhirlyKit
 {
 using namespace detail;
-
-#if !MAPLY_MINIMAL
 
 VectorObject::VectorObject()
     : VectorObject(10)
@@ -101,7 +95,6 @@ bool VectorObject::FromGeoJSONAssembly(const std::string &json,std::map<std::str
 
 bool VectorObject::fromShapeFile(const std::string &fileName)
 {
-#if !MAPLY_MINIMAL
     ShapeReader shapeReader(fileName);
     if (!shapeReader.isValid())
         return false;
@@ -111,9 +104,6 @@ bool VectorObject::fromShapeFile(const std::string &fileName)
     for (unsigned int ii=0;ii<numObj;ii++) {
         shapes.insert(shapeReader.getObjectByIndex(ii, nullptr));
     }
-#else
-    throw std::runtime_error("unsupported");
-#endif //!MAPLY_MINIMAL
     return true;
 }
 
@@ -1064,21 +1054,6 @@ static void SubdivideEdgesToSurfaceGCGeo(const VectorRing &inPts,VectorRing &out
     }
 }
 
-#if 0
-static void SubdivideEdgesToSurfaceGCGeo(const VectorRing3d &inPts,VectorRing &outPts2D,bool closed,
-                                         CoordSystemDisplayAdapter *adapter,CoordSystem* coordSys,
-                                         float eps,float surfOffset=0,int minPts=0)
-{
-    VectorRing inPts2D;
-    inPts2D.reserve(inPts.size());
-    for (const auto &p : inPts)
-    {
-        inPts2D.emplace_back(p.x(),p.y());
-    }
-    SubdivideEdgesToSurfaceGCGeo(inPts2D,outPts2D,closed,adapter,coordSys,eps,surfOffset,minPts);
-}
-#endif
-
 static void SubdivideEdgesToSurfaceGCGeo(const VectorRing3d &inPts,Point3dVector &outPts,bool closed,
                                          CoordSystemDisplayAdapter *adapter,CoordSystem* coordSys,
                                          float eps,float surfOffset=0,int minPts=0)
@@ -1118,8 +1093,6 @@ static void fixEdges(const VectorRing& outPts2D, VectorRing& offsetPts2D)
     }
     offsetPts2D.back() = outPts2D.back() + Point2f(xOff,0.0);
 }
-
-#if !MAPLY_MINIMAL
 
 template <typename T>
 static inline Point3d toGeocentric(const Eigen::Matrix<T,2,1> &p, double geoidHeight = 0.0)
@@ -1285,8 +1258,6 @@ static void SubdivideGeoLib(Tin beg, Tin end, Tout out, double maxDistMeters)
     }
 }
 
-#endif //!MAPLY_MINIMAL
-
 template <typename T> struct Adapt3dTo2f : std::vector<Point2f>::const_iterator
 {
     explicit Adapt3dTo2f(T i) : _i(i) {}
@@ -1312,8 +1283,6 @@ template <typename T> struct Adapt2fTo3d
 template <typename T> Adapt3dTo2f<T> make3to2(T iter) { return Adapt3dTo2f<T>(iter); }
 template <typename T> Adapt2fTo3d<T> make2to3(T iter) { return Adapt2fTo3d<T>(iter); }
 
-#if !MAPLY_MINIMAL
-
 static void SubdivideGeoLib(const VectorRing &inPts, VectorRing &outPts, double maxDistMeters)
 {
     outPts.reserve(outPts.size() + inPts.size() * 10);
@@ -1326,10 +1295,7 @@ static void SubdivideGeoLib(const VectorRing3d &inPts, VectorRing3d &outPts, dou
     SubdivideGeoLib(make3to2(inPts.begin()), make3to2(inPts.end()), make2to3(std::back_inserter(outPts)), maxDistMeters);
 }
 
-# define GEOC_EARTH_RAD detail::wgs84Geodesic().EquatorialRadius()
-#else
-# define GEOC_EARTH_RAD 6378137.0
-#endif //!MAPLY_MINIMAL
+#define GEOC_EARTH_RAD detail::wgs84Geodesic().EquatorialRadius()
 
 void VectorObject::subdivideToInternal(float epsilon,WhirlyKit::CoordSystemDisplayAdapter *adapter,bool useGeoLib,bool edgeMode)
 {
@@ -1343,13 +1309,11 @@ void VectorObject::subdivideToInternal(float epsilon,WhirlyKit::CoordSystemDispl
         if (const auto lin = dynamic_cast<VectorLinear*>(shape))
         {
             VectorRing outPts2D;
-#if !MAPLY_MINIMAL
             if (useGeoLib)
             {
                 SubdivideGeoLib(lin->pts,outPts2D,geoDist);
             }
             else
-#endif //!MAPLY_MINIMAL
             {
                 SubdivideEdgesToSurfaceGCGeo(lin->pts,outPts2D,false,adapter,coordSys,epsilon);
             }
@@ -1365,13 +1329,11 @@ void VectorObject::subdivideToInternal(float epsilon,WhirlyKit::CoordSystemDispl
             }
         } else if (const auto lin3d = dynamic_cast<VectorLinear3d*>(shape)) {
             VectorRing3d outPts;
-#if !MAPLY_MINIMAL
             if (useGeoLib)
             {
                 SubdivideGeoLib(lin3d->pts, outPts, geoDist);
             }
             else
-#endif //!MAPLY_MINIMAL
             {
                 SubdivideEdgesToSurfaceGCGeo(lin3d->pts, outPts, false, adapter, coordSys, epsilon);
             }
@@ -1381,13 +1343,11 @@ void VectorObject::subdivideToInternal(float epsilon,WhirlyKit::CoordSystemDispl
             for (unsigned int ii=0;ii<ar->loops.size();ii++)
             {
                 outPts.clear();
-#if !MAPLY_MINIMAL
                 if (useGeoLib)
                 {
                     SubdivideGeoLib(ar->loops[ii], outPts, geoDist);
                 }
                 else
-#endif //!MAPLY_MINIMAL
                 {
                     SubdivideEdgesToSurfaceGCGeo(ar->loops[ii], outPts, true, adapter, coordSys, epsilon);
                 }
@@ -1624,7 +1584,6 @@ VectorObjectRef VectorObject::unClosedLoops() const
 
 bool VectorObject::anyIntersections() const
 {
-#if !MAPLY_MINIMAL
     for (const auto &shape : shapes)
     {
         if (const auto ln = dynamic_cast<const VectorLinear*>(shape.get()))
@@ -1645,9 +1604,6 @@ bool VectorObject::anyIntersections() const
             }
         }
     }
-#else
-    throw std::runtime_error("unsupported");
-#endif //!MAPLY_MINIMAL
     return false;
 }
 
@@ -1808,8 +1764,6 @@ VectorObjectRef VectorObject::clipToMbr(const Point2d &ll,const Point2d &ur)
 
     return newVec;
 }
-
-#endif //!MAPLY_MINIMAL
 
 void SampleGreatCircle(const Point2d &startPt,const Point2d &endPt,double height,Point3dVector &pts,
                        const WhirlyKit::CoordSystemDisplayAdapter *coordAdapter,double eps)

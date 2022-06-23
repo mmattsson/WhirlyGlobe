@@ -2131,6 +2131,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
         }
         else if ([shape isKindOfClass:[MaplyShapeGreatCircle class]])
         {
+#if !MAPLY_MINIMAL
             auto gc = (MaplyShapeGreatCircle *)shape;
             auto lin = std::make_unique<Linear>();
             
@@ -2163,6 +2164,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             baseShape = lin.get();
             specialShapes.push_back(lin.get());
             shapeOwner.push_back(std::move(lin));
+#endif //!MAPLY_MINIMAL
         }
         else if ([shape isKindOfClass:[MaplyShapeRectangle class]])
         {
