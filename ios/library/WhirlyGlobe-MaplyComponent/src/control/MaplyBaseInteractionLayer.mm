@@ -2102,6 +2102,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     for (MaplyShape *shape in shapes)
     {
         Shape *baseShape = NULL;
+#if !MAPLY_MINIMAL
         if ([shape isKindOfClass:[MaplyShapeCircle class]])
         {
             auto circle = (MaplyShapeCircle *)shape;
@@ -2131,7 +2132,6 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
         }
         else if ([shape isKindOfClass:[MaplyShapeGreatCircle class]])
         {
-#if !MAPLY_MINIMAL
             auto gc = (MaplyShapeGreatCircle *)shape;
             auto lin = std::make_unique<Linear>();
             
@@ -2164,9 +2164,10 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             baseShape = lin.get();
             specialShapes.push_back(lin.get());
             shapeOwner.push_back(std::move(lin));
-#endif //!MAPLY_MINIMAL
         }
-        else if ([shape isKindOfClass:[MaplyShapeRectangle class]])
+        else
+#endif //!MAPLY_MINIMAL
+            if ([shape isKindOfClass:[MaplyShapeRectangle class]])
         {
             const auto rc = (MaplyShapeRectangle *)shape;
             auto rect = (Rectangle *)[rc asWKShape:inDesc];
@@ -2186,6 +2187,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             // Note: Selectability
             ourShapes.push_back(rect);
         }
+#if !MAPLY_MINIMAL
         else if ([shape isKindOfClass:[MaplyShapeLinear class]])
         {
             auto lin = (MaplyShapeLinear *)shape;
@@ -2206,7 +2208,6 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
             ourShapes.push_back(newEx);
         }
         
-#if !MAPLY_MINIMAL
         // Handle selection
         if (baseShape && shape.selectable)
         {

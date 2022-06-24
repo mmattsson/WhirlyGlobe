@@ -320,7 +320,9 @@ void SubdivideEdgesToSurfaceGC(const VectorRing &inPts,Point3dVector &outPts,boo
 
 VectorShape::VectorShape()
 {
+#if !MAPLY_MINIMAL
     attrDict = MutableDictionaryMake();
+#endif //!MAPLY_MINIMAL
 }
    
 VectorShape::~VectorShape() = default;

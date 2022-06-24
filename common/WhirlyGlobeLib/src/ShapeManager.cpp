@@ -86,6 +86,8 @@ Point3d Shape::displayCenter(WhirlyKit::CoordSystemDisplayAdapter *coordAdapter,
 	return {0.0,0.0,0.0 };
 }
 
+#if !MAPLY_MINIMAL
+
 Circle::Circle()
     : loc(0,0), radius(0.0), height(0.0), sampleX(10)
 {
@@ -161,7 +163,6 @@ void Circle::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
     triBuilder->addConvexOutline(samples,norm,theColor,shapeMbr);
     
     // Add a selection region
-#if !MAPLY_MINIMAL
     if (isSelectable && selectManager && sceneRep)
     {
         Point3d pts[8];
@@ -179,7 +180,6 @@ void Circle::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                               regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-#endif //!MAPLY_MINIMAL
 }
 
 Sphere::Sphere()
@@ -271,7 +271,6 @@ void Sphere::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
 
     triBuilder->addTriangles(locs,norms,colors,tris);
 
-#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -291,7 +290,6 @@ void Sphere::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                               regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-#endif //!MAPLY_MINIMAL
 }
     
 Cylinder::Cylinder()
@@ -387,7 +385,6 @@ void Cylinder::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
     
     circleSamples.clear();
     
-#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -407,9 +404,8 @@ void Cylinder::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
                                               triBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-#endif //!MAPLY_MINIMAL
 }
-    
+
 Linear::Linear()
 : lineWidth(0.0)
 {
@@ -426,7 +422,6 @@ void Linear::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
 {
     auto theColor = useColor ? color : regBuilder->getShapeInfo()->color;
 
-#if !MAPLY_MINIMAL
     if (isSelectable)
     {
         selectManager->addSelectableLinear(selectID,pts,
@@ -435,7 +430,6 @@ void Linear::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuilder
                                            regBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-#endif //!MAPLY_MINIMAL
 
     regBuilder->addPoints(pts, theColor, mbr, lineWidth, false);
 }
@@ -516,7 +510,7 @@ void Extruded::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
     }
     VectorTrianglesRef trisRef = VectorTriangles::createTriangles();
     TesselateRing(ring,trisRef);
-    
+
     std::vector<Point3dVector> polytope;
     double z = loc.z()*scale;
     double theThickness = thickness*scale;
@@ -560,7 +554,6 @@ void Extruded::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
         triBuilder->addConvexOutline(locPts, thisNorm, theColor, shapeMbr);
     }
     
-#if !MAPLY_MINIMAL
     // Add a selection region
     if (isSelectable && selectManager && sceneRep)
     {
@@ -570,8 +563,9 @@ void Extruded::makeGeometryWithBuilder(WhirlyKit::ShapeDrawableBuilder *regBuild
                                    triBuilder->getShapeInfo()->enable);
         sceneRep->selectIDs.insert(selectID);
     }
-#endif //!MAPLY_MINIMAL
 }
+
+#endif //!MAPLY_MINIMAL
 
 Rectangle::Rectangle()
 : ll(0,0,0), ur(0,0,0)

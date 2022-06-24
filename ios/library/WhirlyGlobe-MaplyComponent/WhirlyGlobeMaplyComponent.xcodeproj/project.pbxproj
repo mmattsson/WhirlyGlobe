@@ -908,264 +908,89 @@
 		31041A3527A45A68004B25E1 /* GeographicLib.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31041A3427A45A68004B25E1 /* GeographicLib.mm */; };
 		31041A4327A4C3F8004B25E1 /* GlobeTapMessage_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 31041A4227A4C3F8004B25E1 /* GlobeTapMessage_private.h */; };
 		31056FEE2863C72D00B50828 /* MaplyMatrix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537B41D249A1200B60FAD /* MaplyMatrix.mm */; };
-		31056FEF2863C72D00B50828 /* PJ_eck3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43B1E82E2490095FB14 /* PJ_eck3.c */; };
-		31056FF02863C72D00B50828 /* PJ_larr.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45F1E82E2490095FB14 /* PJ_larr.c */; };
 		31056FF42863C72D00B50828 /* MaplyCoordinate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537A71D249A1200B60FAD /* MaplyCoordinate.mm */; };
 		31056FF62863C72D00B50828 /* Identifiable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B5E21F7E7DF0078A975 /* Identifiable.cpp */; };
 		31056FFA2863C72D00B50828 /* Proj4CoordSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1A21F79AE30078A975 /* Proj4CoordSystem.cpp */; };
-		310570002863C72D00B50828 /* PJ_eck2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43A1E82E2490095FB14 /* PJ_eck2.c */; };
-		310570012863C72D00B50828 /* PJ_eck5.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43D1E82E2490095FB14 /* PJ_eck5.c */; };
 		310570022863C72D00B50828 /* LoadedTileNew.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E7942213979800815D9C /* LoadedTileNew.cpp */; };
-		310570032863C72D00B50828 /* PJ_airy.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4241E82E2490095FB14 /* PJ_airy.c */; };
-		310570052863C72D00B50828 /* DictionaryC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6FA67254B47AF00FD8374 /* DictionaryC.cpp */; };
-		310570062863C72D00B50828 /* pj_mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4731E82E2490095FB14 /* pj_mutex.c */; };
-		310570072863C72D00B50828 /* dmstor.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4161E82E2490095FB14 /* dmstor.c */; };
 		310570082863C72D00B50828 /* QuadLoaderReturn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E7A622161C0200815D9C /* QuadLoaderReturn.cpp */; };
-		3105700D2863C72D00B50828 /* PJ_laea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45D1E82E2490095FB14 /* PJ_laea.c */; };
-		310570122863C72D00B50828 /* PJ_lagrng.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45E1E82E2490095FB14 /* PJ_lagrng.c */; };
-		310570132863C72D00B50828 /* pj_deriv.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4381E82E2490095FB14 /* pj_deriv.c */; };
-		310570162863C72D00B50828 /* RawPNGImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B50CEAF25798F3200BD4004 /* RawPNGImage.cpp */; };
-		310570182863C72D00B50828 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3C01E82E2490095FB14 /* mesh.cpp */; };
-		310570192863C72D00B50828 /* pj_mlfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46F1E82E2490095FB14 /* pj_mlfn.c */; };
-		3105701B2863C72D00B50828 /* adjlon.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4121E82E2490095FB14 /* adjlon.c */; };
-		3105701C2863C72D00B50828 /* PJ_qsc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B40E1E82E2490095FB14 /* PJ_qsc.c */; };
-		3105701D2863C72D00B50828 /* PJ_nsper.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4781E82E2490095FB14 /* PJ_nsper.c */; };
 		3105701E2863C72D00B50828 /* QuadImageFrameLoader_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE7E7BA221B22E500E4EFBA /* QuadImageFrameLoader_iOS.mm */; };
 		3105701F2863C72D00B50828 /* BasicDrawableBuilderMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B69985A228DD36400C31E3F /* BasicDrawableBuilderMTL.mm */; };
-		310570232863C72D00B50828 /* pj_initcache.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4581E82E2490095FB14 /* pj_initcache.c */; };
-		310570262863C72D00B50828 /* PJ_labrd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45C1E82E2490095FB14 /* PJ_labrd.c */; };
 		3105702A2863C72D00B50828 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B6421F7E7E00078A975 /* Texture.cpp */; };
 		3105702B2863C72D00B50828 /* BasicDrawableMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699864228DD36700C31E3F /* BasicDrawableMTL.mm */; };
 		3105702F2863C72D00B50828 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B6221F7E7E00078A975 /* Drawable.cpp */; };
 		310570312863C72D00B50828 /* MaplyView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132421F8DD7E006AA344 /* MaplyView.cpp */; };
-		310570322863C72D00B50828 /* pj_malloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4691E82E2490095FB14 /* pj_malloc.c */; };
-		310570332863C72D00B50828 /* pj_param.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4801E82E2490095FB14 /* pj_param.c */; };
-		310570342863C72D00B50828 /* PJ_cc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42F1E82E2490095FB14 /* PJ_cc.c */; };
-		310570362863C72D00B50828 /* PJ_gn_sinu.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44C1E82E2490095FB14 /* PJ_gn_sinu.c */; };
-		310570372863C72D00B50828 /* PJ_wink1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A31E82E2490095FB14 /* PJ_wink1.c */; };
-		3105703A2863C72D00B50828 /* pj_gridcatalog.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B40D1E82E2490095FB14 /* pj_gridcatalog.c */; };
-		3105703B2863C72D00B50828 /* PJ_eqc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4401E82E2490095FB14 /* PJ_eqc.c */; };
 		3105703E2863C72D00B50828 /* MaplyCoordinateSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537A81D249A1200B60FAD /* MaplyCoordinateSystem.mm */; };
-		310570412863C72D00B50828 /* PJ_cass.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42E1E82E2490095FB14 /* PJ_cass.c */; };
-		310570432863C72D00B50828 /* PJ_tmerc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4951E82E2490095FB14 /* PJ_tmerc.c */; };
 		310570442863C72D00B50828 /* NSString+Stuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B54C1E82E2490095FB14 /* NSString+Stuff.mm */; };
 		310570462863C72D00B50828 /* Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A788A228607B3008B0A1F /* Program.cpp */; };
 		3105704B2863C72D00B50828 /* MaplyControllerLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537D41D249A1200B60FAD /* MaplyControllerLayer.mm */; };
-		3105704D2863C72D00B50828 /* PJ_bonne.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42D1E82E2490095FB14 /* PJ_bonne.c */; };
-		310570512863C72D00B50828 /* PJ_urmfps.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B49B1E82E2490095FB14 /* PJ_urmfps.c */; };
-		310570522863C72D00B50828 /* PJ_hatano.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4531E82E2490095FB14 /* PJ_hatano.c */; };
-		310570542863C72D00B50828 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A816825391A0D0016618C /* lodepng.cpp */; };
-		310570562863C72D00B50828 /* pj_factors.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4431E82E2490095FB14 /* pj_factors.c */; };
 		310570592863C72D00B50828 /* ImageTile_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E7A02215F70400815D9C /* ImageTile_iOS.mm */; };
 		3105705A2863C72D00B50828 /* VertexAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A78B2228A1539008B0A1F /* VertexAttribute.cpp */; };
 		3105705B2863C72D00B50828 /* QuadSamplingController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC337D22163B050038A229 /* QuadSamplingController.cpp */; };
-		3105705D2863C72D00B50828 /* pj_inv3d.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4081E82E2490095FB14 /* pj_inv3d.c */; };
-		3105705E2863C72D00B50828 /* pj_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4641E82E2490095FB14 /* pj_list.c */; };
-		3105705F2863C72D00B50828 /* nad_cvt.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B41E1E82E2490095FB14 /* nad_cvt.c */; };
-		310570622863C72D00B50828 /* PJ_bipc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42B1E82E2490095FB14 /* PJ_bipc.c */; };
-		310570642863C72D00B50828 /* pj_gridinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44F1E82E2490095FB14 /* pj_gridinfo.c */; };
 		310570652863C72D00B50828 /* MaplyShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537C51D249A1200B60FAD /* MaplyShader.mm */; };
-		310570662863C72D00B50828 /* PJ_mbtfpq.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46C1E82E2490095FB14 /* PJ_mbtfpq.c */; };
-		310570672863C72D00B50828 /* PJ_nell.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4761E82E2490095FB14 /* PJ_nell.c */; };
 		310570682863C72D00B50828 /* QuadTreeNew.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B2421F79BF30078A975 /* QuadTreeNew.cpp */; };
-		310570692863C72D00B50828 /* PJ_crast.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4331E82E2490095FB14 /* PJ_crast.c */; };
 		3105706A2863C72D00B50828 /* RenderTargetMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699859228DD36400C31E3F /* RenderTargetMTL.mm */; };
-		3105706C2863C72D00B50828 /* PJ_putp2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4841E82E2490095FB14 /* PJ_putp2.c */; };
-		3105706E2863C72D00B50828 /* PJ_calcofi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B846ED621F1359200EF2A82 /* PJ_calcofi.c */; };
 		3105706F2863C72D00B50828 /* FlatMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1721F79AE30078A975 /* FlatMath.cpp */; };
-		310570702863C72D00B50828 /* pj_auth.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4291E82E2490095FB14 /* pj_auth.c */; };
-		310570722863C72D00B50828 /* PJ_nocol.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4771E82E2490095FB14 /* PJ_nocol.c */; };
 		310570742863C72D00B50828 /* BasicDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B5B21F7E7DF0078A975 /* BasicDrawable.cpp */; };
 		3105707A2863C72D00B50828 /* UIColor+Stuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B54B1E82E2490095FB14 /* UIColor+Stuff.mm */; };
-		3105707B2863C72D00B50828 /* PJ_robin.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48B1E82E2490095FB14 /* PJ_robin.c */; };
 		3105707C2863C72D00B50828 /* QuadSamplingParams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC337E22163B050038A229 /* QuadSamplingParams.cpp */; };
-		3105707D2863C72D00B50828 /* proj_mdist.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A81E82E2490095FB14 /* proj_mdist.c */; };
-		3105707E2863C72D00B50828 /* PJ_putp4p.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4861E82E2490095FB14 /* PJ_putp4p.c */; };
-		310570802863C72D00B50828 /* PJ_wag3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A11E82E2490095FB14 /* PJ_wag3.c */; };
-		310570812863C72D00B50828 /* PJ_sch.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B40F1E82E2490095FB14 /* PJ_sch.c */; };
-		310570822863C72D00B50828 /* pj_ellps.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43F1E82E2490095FB14 /* pj_ellps.c */; };
-		310570852863C72D00B50828 /* PJ_lask.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4601E82E2490095FB14 /* PJ_lask.c */; };
-		310570872863C72D00B50828 /* sweep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3CA1E82E2490095FB14 /* sweep.cpp */; };
-		310570882863C72D00B50828 /* pj_qsfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4891E82E2490095FB14 /* pj_qsfn.c */; };
 		3105708D2863C72D00B50828 /* QuadImageFrameLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC339122178B130038A229 /* QuadImageFrameLoader.cpp */; };
-		3105708F2863C72D00B50828 /* PJ_wag7.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A21E82E2490095FB14 /* PJ_wag7.c */; };
 		310570932863C72D00B50828 /* VertexAttributeMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699865228DD36800C31E3F /* VertexAttributeMTL.mm */; };
 		310570952863C72D00B50828 /* BaseInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B846F1621F158EA00EF2A82 /* BaseInfo.cpp */; };
 		310570972863C72D00B50828 /* StringIndexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6597EC24E4AF3600FA26A9 /* StringIndexer.cpp */; };
-		3105709B2863C72D00B50828 /* PJ_putp6.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4881E82E2490095FB14 /* PJ_putp6.c */; };
-		3105709F2863C72D00B50828 /* pj_gridlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4501E82E2490095FB14 /* pj_gridlist.c */; };
 		310570A12863C72D00B50828 /* BasicDrawableInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B5C21F7E7DF0078A975 /* BasicDrawableInstance.cpp */; };
-		310570A22863C72D00B50828 /* PJ_sterea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4901E82E2490095FB14 /* PJ_sterea.c */; };
-		310570A62863C72D00B50828 /* tess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3CC1E82E2490095FB14 /* tess.cpp */; };
-		310570A72863C72D00B50828 /* PJ_tpeqd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4961E82E2490095FB14 /* PJ_tpeqd.c */; };
-		310570A82863C72D00B50828 /* pj_geocent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4491E82E2490095FB14 /* pj_geocent.c */; };
 		310570AB2863C72D00B50828 /* CoordSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1621F79AE30078A975 /* CoordSystem.cpp */; };
 		310570AF2863C72D00B50828 /* Platform.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B2A21F7A4820078A975 /* Platform.mm */; };
-		310570B42863C72D00B50828 /* PJ_stere.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48F1E82E2490095FB14 /* PJ_stere.c */; };
 		310570B52863C72D00B50828 /* RenderTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A78A92289DA3D008B0A1F /* RenderTarget.cpp */; };
-		310570B62863C72D00B50828 /* pj_inv.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4591E82E2490095FB14 /* pj_inv.c */; };
-		310570B72863C72D00B50828 /* PJ_lcca.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4631E82E2490095FB14 /* PJ_lcca.c */; };
-		310570B92863C72D00B50828 /* pj_fileapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B40B1E82E2490095FB14 /* pj_fileapi.c */; };
 		310570BA2863C72D00B50828 /* MaplyRenderController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B127BFC2012ACA20099F405 /* MaplyRenderController.mm */; };
-		310570BB2863C72D00B50828 /* PJ_ocea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47B1E82E2490095FB14 /* PJ_ocea.c */; };
 		310570BD2863C72D00B50828 /* GlobeMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1921F79AE30078A975 /* GlobeMath.cpp */; };
-		310570BE2863C72D00B50828 /* pj_strerrno.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4911E82E2490095FB14 /* pj_strerrno.c */; };
-		310570BF2863C72D00B50828 /* PJ_ortho.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47F1E82E2490095FB14 /* PJ_ortho.c */; };
-		310570C02863C72D00B50828 /* PJ_cea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4301E82E2490095FB14 /* PJ_cea.c */; };
-		310570C22863C72D00B50828 /* nad_intr.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4201E82E2490095FB14 /* nad_intr.c */; };
-		310570C32863C72D00B50828 /* PJ_putp3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4851E82E2490095FB14 /* PJ_putp3.c */; };
 		310570C72863C72D00B50828 /* PerformanceTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B9B21FBA9E90078A975 /* PerformanceTimer.cpp */; };
-		310570C92863C72D00B50828 /* PJ_wag2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A01E82E2490095FB14 /* PJ_wag2.c */; };
-		310570CA2863C72D00B50828 /* PJ_hammer.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4521E82E2490095FB14 /* PJ_hammer.c */; };
-		310570CB2863C72D00B50828 /* pj_pr_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4831E82E2490095FB14 /* pj_pr_list.c */; };
 		310570CF2863C72D00B50828 /* LayerViewWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B5B71E82E2490095FB14 /* LayerViewWatcher.mm */; };
-		310570D02863C72D00B50828 /* PJ_geos.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44A1E82E2490095FB14 /* PJ_geos.c */; };
 		310570D42863C72D00B50828 /* MaplyVertexAttribute.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537D21D249A1200B60FAD /* MaplyVertexAttribute.mm */; };
-		310570D82863C72D00B50828 /* PJ_wink2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A41E82E2490095FB14 /* PJ_wink2.c */; };
 		310570D92863C72D00B50828 /* DrawableMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B2EA04C23427F88006F2F34 /* DrawableMTL.mm */; };
 		310570DA2863C72D00B50828 /* ChangeRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6997ED228CAF7C00C31E3F /* ChangeRequest.cpp */; };
-		310570DC2863C72D00B50828 /* emess.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4171E82E2490095FB14 /* emess.c */; };
 		310570DE2863C72D00B50828 /* ShapeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B846F1E21F158EB00EF2A82 /* ShapeManager.cpp */; };
 		310570E12863C72D00B50828 /* MaplySharedAttributes.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537C71D249A1200B60FAD /* MaplySharedAttributes.mm */; };
-		310570E32863C72D00B50828 /* pj_release.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48A1E82E2490095FB14 /* pj_release.c */; };
-		310570E72863C72D00B50828 /* pj_msfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4721E82E2490095FB14 /* pj_msfn.c */; };
-		310570EB2863C72D00B50828 /* PJ_eck4.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43C1E82E2490095FB14 /* PJ_eck4.c */; };
-		310570EC2863C72D00B50828 /* PJ_putp5.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4871E82E2490095FB14 /* PJ_putp5.c */; };
-		310570ED2863C72D00B50828 /* PJ_denoy.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4371E82E2490095FB14 /* PJ_denoy.c */; };
-		310570F12863C72D00B50828 /* pj_units.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4991E82E2490095FB14 /* pj_units.c */; };
 		310570F32863C72D00B50828 /* MaplyQuadSampler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B0387F5206ABD7400DD5C40 /* MaplyQuadSampler.mm */; };
 		310570F42863C72D00B50828 /* MaplyRemoteTileFetcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E608E20D4800000FB96F0 /* MaplyRemoteTileFetcher.mm */; };
-		310570F52863C72D00B50828 /* pj_ctx.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4341E82E2490095FB14 /* pj_ctx.c */; };
 		310570F62863C72D00B50828 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B6121F7E7E00078A975 /* Scene.cpp */; };
-		310570F72863C72D00B50828 /* PJ_chamb.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4311E82E2490095FB14 /* PJ_chamb.c */; };
-		310570F82863C72D00B50828 /* RawData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132F21F936CD006AA344 /* RawData.cpp */; };
-		310570FB2863C72D00B50828 /* PJ_igh.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4551E82E2490095FB14 /* PJ_igh.c */; };
 		310570FC2863C72D00B50828 /* SceneRendererMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699861228DD36600C31E3F /* SceneRendererMTL.mm */; };
-		310570FD2863C72D00B50828 /* aasincos.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4111E82E2490095FB14 /* aasincos.c */; };
 		310570FF2863C72D00B50828 /* ShapeDrawableBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446AE721F299FA0078A975 /* ShapeDrawableBuilder.cpp */; };
-		310571002863C72D00B50828 /* PJ_moll.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4711E82E2490095FB14 /* PJ_moll.c */; };
-		310571022863C72D00B50828 /* PJ_isea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45A1E82E2490095FB14 /* PJ_isea.c */; };
 		310571032863C72D00B50828 /* QuadDisplayControllerNew.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE7E7B22214C6EB00E4EFBA /* QuadDisplayControllerNew.cpp */; };
 		310571042863C72D00B50828 /* MaplyImageTile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537AF1D249A1200B60FAD /* MaplyImageTile.mm */; };
-		310571082863C72D00B50828 /* PJ_tcea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4941E82E2490095FB14 /* PJ_tcea.c */; };
-		3105710B2863C72D00B50828 /* PJ_omerc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47D1E82E2490095FB14 /* PJ_omerc.c */; };
 		3105710F2863C72D00B50828 /* SceneRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A78AD2289E426008B0A1F /* SceneRenderer.cpp */; };
-		310571102863C72D00B50828 /* clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B7C11E82E68E0095FB14 /* clipper.cpp */; };
-		310571112863C72D00B50828 /* priorityq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3C61E82E2490095FB14 /* priorityq.cpp */; };
-		310571152863C72D00B50828 /* pj_apply_gridshift.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4261E82E2490095FB14 /* pj_apply_gridshift.c */; };
 		310571172863C72D00B50828 /* MaplyTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537CC1D249A1200B60FAD /* MaplyTexture.mm */; };
-		310571182863C72D00B50828 /* PJ_lsat.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4681E82E2490095FB14 /* PJ_lsat.c */; };
-		310571192863C72D00B50828 /* dict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3BA1E82E2490095FB14 /* dict.cpp */; };
 		3105711F2863C72D00B50828 /* WGCoordinate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537F11D249A1200B60FAD /* WGCoordinate.mm */; };
-		310571212863C72D00B50828 /* PJ_fouc_s.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4451E82E2490095FB14 /* PJ_fouc_s.c */; };
 		310571282863C72D00B50828 /* LayerThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B5B91E82E2490095FB14 /* LayerThread.mm */; };
 		310571292863C72D00B50828 /* MaplyRenderTarget.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FD2C21F478F5200CA9C18 /* MaplyRenderTarget.mm */; };
-		3105712A2863C72D00B50828 /* pj_gauss.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4481E82E2490095FB14 /* pj_gauss.c */; };
-		3105712B2863C72D00B50828 /* pj_datum_set.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4351E82E2490095FB14 /* pj_datum_set.c */; };
 		3105712D2863C72D00B50828 /* TextureMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699868228DD36A00C31E3F /* TextureMTL.mm */; };
-		3105712E2863C72D00B50828 /* proj_etmerc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A71E82E2490095FB14 /* proj_etmerc.c */; };
-		310571332863C72D00B50828 /* pj_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4571E82E2490095FB14 /* pj_init.c */; };
 		310571342863C72D00B50828 /* ImageTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E79C2215F4E900815D9C /* ImageTile.cpp */; };
-		310571352863C72D00B50828 /* geod_set.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B41B1E82E2490095FB14 /* geod_set.c */; };
-		310571382863C72D00B50828 /* geocent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4191E82E2490095FB14 /* geocent.c */; };
-		3105713A2863C72D00B50828 /* PJ_gnom.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44D1E82E2490095FB14 /* PJ_gnom.c */; };
-		3105713C2863C72D00B50828 /* PJ_somerc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48E1E82E2490095FB14 /* PJ_somerc.c */; };
-		310571412863C72D00B50828 /* PJ_nzmg.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4791E82E2490095FB14 /* PJ_nzmg.c */; };
-		310571422863C72D00B50828 /* PJ_loxim.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4671E82E2490095FB14 /* PJ_loxim.c */; };
-		310571442863C72D00B50828 /* PJ_eck1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4391E82E2490095FB14 /* PJ_eck1.c */; };
-		310571492863C72D00B50828 /* pj_transform.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4971E82E2490095FB14 /* pj_transform.c */; };
-		3105714B2863C72D00B50828 /* geom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B3BC1E82E2490095FB14 /* geom.cpp */; };
-		3105714C2863C72D00B50828 /* pj_zpoly1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A51E82E2490095FB14 /* pj_zpoly1.c */; };
-		3105714F2863C72D00B50828 /* PJ_rpoly.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48C1E82E2490095FB14 /* PJ_rpoly.c */; };
-		310571512863C72D00B50828 /* PJ_aeqd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4231E82E2490095FB14 /* PJ_aeqd.c */; };
-		310571522863C72D00B50828 /* pj_open_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47E1E82E2490095FB14 /* pj_open_lib.c */; };
-		310571532863C72D00B50828 /* pj_tsfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4981E82E2490095FB14 /* pj_tsfn.c */; };
-		310571542863C72D00B50828 /* pj_ell_set.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43E1E82E2490095FB14 /* pj_ell_set.c */; };
-		310571592863C72D00B50828 /* PJ_vandg4.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B49F1E82E2490095FB14 /* PJ_vandg4.c */; };
-		3105715B2863C72D00B50828 /* pj_gc_reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B40C1E82E2490095FB14 /* pj_gc_reader.c */; };
 		3105715D2863C72D00B50828 /* MaplyQuadImageFrameLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8A3AC21ED43770025DA98 /* MaplyQuadImageFrameLoader.mm */; };
-		3105715E2863C72D00B50828 /* nad_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B41F1E82E2490095FB14 /* nad_init.c */; };
-		3105715F2863C72D00B50828 /* pj_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4661E82E2490095FB14 /* pj_log.c */; };
-		310571612863C72D00B50828 /* PJ_oea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47C1E82E2490095FB14 /* PJ_oea.c */; };
-		310571622863C72D00B50828 /* pj_fwd3d.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4071E82E2490095FB14 /* pj_fwd3d.c */; };
 		310571632863C72D00B50828 /* MaplyQuadImageLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC3395221C6F230038A229 /* MaplyQuadImageLoader.mm */; };
-		310571642863C72D00B50828 /* PJ_mbt_fps.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46A1E82E2490095FB14 /* PJ_mbt_fps.c */; };
-		310571672863C72D00B50828 /* pj_strtod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4101E82E2490095FB14 /* pj_strtod.c */; };
-		3105716D2863C72D00B50828 /* PJ_aitoff.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4251E82E2490095FB14 /* PJ_aitoff.c */; };
 		3105716F2863C72D00B50828 /* WhirlyGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B0D21F79AD00078A975 /* WhirlyGeometry.cpp */; };
-		310571752863C72D00B50828 /* geodesic.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4091E82E2490095FB14 /* geodesic.c */; };
 		310571762863C72D00B50828 /* BasicDrawableInstanceMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B69985D228DD36500C31E3F /* BasicDrawableInstanceMTL.mm */; };
-		310571772863C72D00B50828 /* Tesselator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B0821F79AD00078A975 /* Tesselator.cpp */; };
-		310571792863C72D00B50828 /* PJ_ob_tran.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B47A1E82E2490095FB14 /* PJ_ob_tran.c */; };
-		3105717A2863C72D00B50828 /* PJ_nell_h.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4751E82E2490095FB14 /* PJ_nell_h.c */; };
-		3105717B2863C72D00B50828 /* vector1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4AC1E82E2490095FB14 /* vector1.c */; };
 		3105717D2863C72D00B50828 /* WrapperMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699863228DD36700C31E3F /* WrapperMTL.mm */; };
-		3105717E2863C72D00B50828 /* PJ_eqdc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4411E82E2490095FB14 /* PJ_eqdc.c */; };
-		310571832863C72D00B50828 /* PJ_gins8.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44B1E82E2490095FB14 /* PJ_gins8.c */; };
 		310571852863C72D00B50828 /* WhirlyKitView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132021F8DD7E006AA344 /* WhirlyKitView.cpp */; };
-		310571892863C72D00B50828 /* PJ_poly.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4821E82E2490095FB14 /* PJ_poly.c */; };
-		3105718D2863C72D00B50828 /* PJ_goode.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B44E1E82E2490095FB14 /* PJ_goode.c */; };
 		3105718E2863C72D00B50828 /* ScreenImportance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B8E21FB99D60078A975 /* ScreenImportance.cpp */; };
-		310571912863C72D00B50828 /* PJ_gstmerc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4511E82E2490095FB14 /* PJ_gstmerc.c */; };
-		310571952863C72D00B50828 /* PJ_aea.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4221E82E2490095FB14 /* PJ_aea.c */; };
-		310571972863C72D00B50828 /* rtodms.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4AB1E82E2490095FB14 /* rtodms.c */; };
-		310571992863C72D00B50828 /* pj_latlong.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4611E82E2490095FB14 /* pj_latlong.c */; };
-		3105719A2863C72D00B50828 /* pj_phi2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4811E82E2490095FB14 /* pj_phi2.c */; };
 		3105719C2863C72D00B50828 /* ProgramMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B69985B228DD36400C31E3F /* ProgramMTL.mm */; };
 		3105719D2863C72D00B50828 /* MaplyQuadLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E7A22216163A00815D9C /* MaplyQuadLoader.mm */; };
 		3105719E2863C72D00B50828 /* MapView_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BC3D6C5220255EA00CE91D0 /* MapView_iOS.mm */; };
-		310571A12863C72D00B50828 /* PJ_vandg.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B49D1E82E2490095FB14 /* PJ_vandg.c */; };
-		310571A22863C72D00B50828 /* pj_apply_vgridshift.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4271E82E2490095FB14 /* pj_apply_vgridshift.c */; };
 		310571A32863C72D00B50828 /* MaplyVariableTarget.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8A3B621ED43780025DA98 /* MaplyVariableTarget.mm */; };
 		310571A72863C72D00B50828 /* MaplyTileSourceNew.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8A3AD21ED43770025DA98 /* MaplyTileSourceNew.mm */; };
 		310571A82863C72D00B50828 /* MaplyShape.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537C61D249A1200B60FAD /* MaplyShape.mm */; };
 		310571AB2863C72D00B50828 /* SphericalMercator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1821F79AE30078A975 /* SphericalMercator.cpp */; };
 		310571AC2863C72D00B50828 /* QuadTileBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1E7952213979800815D9C /* QuadTileBuilder.cpp */; };
-		310571AD2863C72D00B50828 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133921F942E1006AA344 /* Dictionary.cpp */; };
 		310571AE2863C72D00B50828 /* MaplyFlatView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132221F8DD7E006AA344 /* MaplyFlatView.cpp */; };
 		310571AF2863C72D00B50828 /* Lighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B3821F7E6850078A975 /* Lighting.cpp */; };
 		310571B02863C72D00B50828 /* BasicDrawableBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A785F2284C408008B0A1F /* BasicDrawableBuilder.cpp */; };
-		310571B22863C72D00B50828 /* pj_datums.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4361E82E2490095FB14 /* pj_datums.c */; };
 		310571B72863C72D00B50828 /* SceneMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B69985E228DD36500C31E3F /* SceneMTL.mm */; };
-		310571BA2863C72D00B50828 /* PJ_tcc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4931E82E2490095FB14 /* PJ_tcc.c */; };
-		310571BB2863C72D00B50828 /* PJ_natearth.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4741E82E2490095FB14 /* PJ_natearth.c */; };
-		310571BC2863C72D00B50828 /* PJ_lcc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4621E82E2490095FB14 /* PJ_lcc.c */; };
-		310571BD2863C72D00B50828 /* PJ_merc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46D1E82E2490095FB14 /* PJ_merc.c */; };
 		310571BE2863C72D00B50828 /* wkDefaultShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2B69987F228E26B500C31E3F /* wkDefaultShaders.metal */; };
-		310571C32863C72D00B50828 /* bucketalloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4905728265AB9E3001E4A98 /* bucketalloc.cpp */; };
 		310571C52863C72D00B50828 /* QuadDisplayLayerNew.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B0387F32069BC3800DD5C40 /* QuadDisplayLayerNew.mm */; };
-		310571C72863C72D00B50828 /* PJ_collg.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4321E82E2490095FB14 /* PJ_collg.c */; };
-		310571C82863C72D00B50828 /* pj_fwd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4461E82E2490095FB14 /* pj_fwd.c */; };
-		310571CC2863C72D00B50828 /* PJ_vandg2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B49E1E82E2490095FB14 /* PJ_vandg2.c */; };
-		310571D52863C72D00B50828 /* PJ_mill.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46E1E82E2490095FB14 /* PJ_mill.c */; };
-		310571D62863C72D00B50828 /* PJ_gall.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4471E82E2490095FB14 /* PJ_gall.c */; };
-		310571DB2863C72D00B50828 /* PJ_august.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4281E82E2490095FB14 /* PJ_august.c */; };
-		310571DE2863C72D00B50828 /* geod_interface.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B846ED321F1356E00EF2A82 /* geod_interface.c */; };
-		310571DF2863C72D00B50828 /* PJ_healpix.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4541E82E2490095FB14 /* PJ_healpix.c */; };
-		310571E32863C72D00B50828 /* PJ_boggs.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42C1E82E2490095FB14 /* PJ_boggs.c */; };
-		310571E42863C72D00B50828 /* PJ_mod_ster.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4701E82E2490095FB14 /* PJ_mod_ster.c */; };
 		310571E52863C72D00B50828 /* BasicDrawableInstanceBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A789722863DF3008B0A1F /* BasicDrawableInstanceBuilder.cpp */; };
-		310571E72863C72D00B50828 /* PJ_fahey.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4441E82E2490095FB14 /* PJ_fahey.c */; };
 		310571E82863C72D00B50828 /* BasicDrawableInstanceBuilderMTL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B699858228DD36300C31E3F /* BasicDrawableInstanceBuilderMTL.mm */; };
-		310571E92863C72D00B50828 /* PJ_mbtfpp.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46B1E82E2490095FB14 /* PJ_mbtfpp.c */; };
-		310571EA2863C72D00B50828 /* RawData_NSData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133521F93969006AA344 /* RawData_NSData.mm */; };
-		310571EF2863C72D00B50828 /* PJ_urm5.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B49A1E82E2490095FB14 /* PJ_urm5.c */; };
-		310571F12863C72D00B50828 /* PJ_sconics.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48D1E82E2490095FB14 /* PJ_sconics.c */; };
-		310571F52863C72D00B50828 /* PJ_krovak.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B45B1E82E2490095FB14 /* PJ_krovak.c */; };
 		310571F82863C72D00B50828 /* WhirlyKitLog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BC3D6F7220CAAC700CE91D0 /* WhirlyKitLog.mm */; };
-		310571F92863C72D00B50828 /* PJ_sts.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4921E82E2490095FB14 /* PJ_sts.c */; };
-		310571FA2863C72D00B50828 /* pj_errno.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4421E82E2490095FB14 /* pj_errno.c */; };
-		310571FF2863C72D00B50828 /* PJ_imw_p.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4561E82E2490095FB14 /* PJ_imw_p.c */; };
-		310572002863C72D00B50828 /* proj_rouss.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4A91E82E2490095FB14 /* proj_rouss.c */; };
-		310572022863C72D00B50828 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B526BDB240DE04B00647336 /* MetalPerformanceShaders.framework */; };
 		310572032863C72D00B50828 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1806D622AED03300DD3DB1 /* Accelerate.framework */; };
-		310572042863C72D00B50828 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B69987C228DE2EF00C31E3F /* MetalKit.framework */; };
 		310572052863C72D00B50828 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B69987A228DE06000C31E3F /* Metal.framework */; };
-		310572072863C72D00B50828 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B84ED1C1F83FC9B00B34D73 /* CoreText.framework */; };
 		310572082863C72D00B50828 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B84ED1A1F83FC8F00B34D73 /* UIKit.framework */; };
-		3105720B2863C72D00B50828 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B84ED161F83FC7000B34D73 /* QuartzCore.framework */; };
-		3105720C2863C72D00B50828 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B84ED121F83FC5A00B34D73 /* CoreGraphics.framework */; };
-		3105720D2863C72D00B50828 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE53AC61D249E1500B60FAD /* CoreLocation.framework */; };
 		310572102863C72D00B50828 /* MaplyAnimateTranslation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC3D6A622024EB300CE91D0 /* MaplyAnimateTranslation.h */; };
 		310572132863C72D00B50828 /* sweep.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B82B3CB1E82E2490095FB14 /* sweep.h */; };
 		310572152863C72D00B50828 /* JSONPreparse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B82B3F11E82E2490095FB14 /* JSONPreparse.h */; };
@@ -1547,7 +1372,6 @@
 		310574B32864C94C00B50828 /* GeographicLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 31CAB8DD27920F4A00A5F744 /* GeographicLib.h */; };
 		310574CA2864D0E700B50828 /* WhirlyVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B0E21F79AD00078A975 /* WhirlyVector.cpp */; };
 		310574CD2864D36F00B50828 /* VectorData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B7C21FB94A00078A975 /* VectorData.cpp */; };
-		310574D22865180400B50828 /* PJ_bacon.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B42A1E82E2490095FB14 /* PJ_bacon.c */; };
 		310574D428651D0300B50828 /* UIImage+Stuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B5491E82E2490095FB14 /* UIImage+Stuff.mm */; };
 		313363AB253E5A2B007C2F27 /* WorkRegion_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 313363AA253E5A24007C2F27 /* WorkRegion_private.h */; };
 		315082CA254CD29000A0A2B2 /* VectorTilePBFParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 315082C9254CD29000A0A2B2 /* VectorTilePBFParser.cpp */; };
@@ -1643,8 +1467,47 @@
 		3194300A254B77F00006B499 /* vector_tile.pb.c in Sources */ = {isa = PBXBuildFile; fileRef = 31943009254B77F00006B499 /* vector_tile.pb.c */; };
 		31A2B37F26AA136A00221CFF /* Expect.h in Headers */ = {isa = PBXBuildFile; fileRef = 31A2B37E26AA136900221CFF /* Expect.h */; };
 		31AC5B712866418000500A3F /* MaplyBaseInteractionLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537A01D249A1200B60FAD /* MaplyBaseInteractionLayer.mm */; };
-		31AC5B722866422C00500A3F /* Dictionary_NSDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133D21FA91A4006AA344 /* Dictionary_NSDictionary.mm */; };
-		31AC5B732866422C00500A3F /* NSDictionary+Stuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B54A1E82E2490095FB14 /* NSDictionary+Stuff.m */; };
+		31AC5B75286657AD00500A3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AC5B74286657AD00500A3F /* CoreGraphics.framework */; };
+		31AC5B77286657D400500A3F /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AC5B76286657D400500A3F /* MetalPerformanceShaders.framework */; };
+		31AC5BA12866635D00500A3F /* pj_transform.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4971E82E2490095FB14 /* pj_transform.c */; };
+		31AC5BA22866638100500A3F /* pj_param.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4801E82E2490095FB14 /* pj_param.c */; };
+		31AC5BA32866638E00500A3F /* pj_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4661E82E2490095FB14 /* pj_log.c */; };
+		31AC5BA42866639300500A3F /* pj_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4571E82E2490095FB14 /* pj_init.c */; };
+		31AC5BA52866639B00500A3F /* pj_ctx.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4341E82E2490095FB14 /* pj_ctx.c */; };
+		31AC5BA6286663A300500A3F /* pj_errno.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4421E82E2490095FB14 /* pj_errno.c */; };
+		31AC5BA7286663B500500A3F /* pj_latlong.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4611E82E2490095FB14 /* pj_latlong.c */; };
+		31AC5BA8286663B900500A3F /* pj_malloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4691E82E2490095FB14 /* pj_malloc.c */; };
+		31AC5BA9286663CE00500A3F /* pj_fwd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4461E82E2490095FB14 /* pj_fwd.c */; };
+		31AC5BAA286663D300500A3F /* pj_inv.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4591E82E2490095FB14 /* pj_inv.c */; };
+		31AC5BAB2866644600500A3F /* pj_strtod.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4101E82E2490095FB14 /* pj_strtod.c */; };
+		31AC5BAC2866645300500A3F /* pj_pr_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4831E82E2490095FB14 /* pj_pr_list.c */; };
+		31AC5BAD2866645A00500A3F /* pj_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4641E82E2490095FB14 /* pj_list.c */; };
+		31AC5BAE2866646600500A3F /* pj_geocent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4491E82E2490095FB14 /* pj_geocent.c */; };
+		31AC5BAF2866648A00500A3F /* pj_datum_set.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4351E82E2490095FB14 /* pj_datum_set.c */; };
+		31AC5BB02866648E00500A3F /* pj_datums.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4361E82E2490095FB14 /* pj_datums.c */; };
+		31AC5BB1286664A500500A3F /* pj_units.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4991E82E2490095FB14 /* pj_units.c */; };
+		31AC5BB2286664CF00500A3F /* PJ_eqc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4401E82E2490095FB14 /* PJ_eqc.c */; };
+		31AC5BB32866650700500A3F /* PJ_stere.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B48F1E82E2490095FB14 /* PJ_stere.c */; };
+		31AC5BB42866654A00500A3F /* pj_mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4731E82E2490095FB14 /* pj_mutex.c */; };
+		31AC5BB52866656400500A3F /* PJ_merc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B46D1E82E2490095FB14 /* PJ_merc.c */; };
+		31AC5BB62866656F00500A3F /* pj_fwd3d.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4071E82E2490095FB14 /* pj_fwd3d.c */; };
+		31AC5BB72866657D00500A3F /* pj_inv3d.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4081E82E2490095FB14 /* pj_inv3d.c */; };
+		31AC5BB82866659200500A3F /* pj_ell_set.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43E1E82E2490095FB14 /* pj_ell_set.c */; };
+		31AC5BB9286665A200500A3F /* pj_initcache.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4581E82E2490095FB14 /* pj_initcache.c */; };
+		31AC5BBA286665B100500A3F /* geocent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4191E82E2490095FB14 /* geocent.c */; };
+		31AC5BBB286665C700500A3F /* dmstor.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4161E82E2490095FB14 /* dmstor.c */; };
+		31AC5BBC286665F300500A3F /* pj_phi2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4811E82E2490095FB14 /* pj_phi2.c */; };
+		31AC5BBD286665FD00500A3F /* PJ_lcc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4621E82E2490095FB14 /* PJ_lcc.c */; };
+		31AC5BBE2866661900500A3F /* pj_tsfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4981E82E2490095FB14 /* pj_tsfn.c */; };
+		31AC5BBF2866662300500A3F /* pj_msfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4721E82E2490095FB14 /* pj_msfn.c */; };
+		31AC5BC02866663400500A3F /* adjlon.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B4121E82E2490095FB14 /* adjlon.c */; };
+		31AC5BC12866664B00500A3F /* pj_ellps.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43F1E82E2490095FB14 /* pj_ellps.c */; };
+		31AC5BC428666B0100500A3F /* Dictionary_NSDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133D21FA91A4006AA344 /* Dictionary_NSDictionary.mm */; };
+		31AC5BC528666B2D00500A3F /* RawData_NSData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133521F93969006AA344 /* RawData_NSData.mm */; };
+		31AC5BC628666B3400500A3F /* RawData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132F21F936CD006AA344 /* RawData.cpp */; };
+		31AC5BC728666B4C00500A3F /* DictionaryC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6FA67254B47AF00FD8374 /* DictionaryC.cpp */; };
+		31AC5BC828666B5F00500A3F /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133921F942E1006AA344 /* Dictionary.cpp */; };
+		31AC5BC928666B9600500A3F /* NSDictionary+Stuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B54A1E82E2490095FB14 /* NSDictionary+Stuff.m */; };
 		31C3A796282C63AE00E1F042 /* QuadTreeIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A795282C63AE00E1F042 /* QuadTreeIdentifier.h */; };
 		31C3A798282C645000E1F042 /* WhirlyEigen.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A797282C645000E1F042 /* WhirlyEigen.h */; };
 		31CAB8DF2792126A00A5F744 /* GeographicLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31CAB8DE2792126A00A5F744 /* GeographicLib.cpp */; };
@@ -2683,6 +2546,8 @@
 		31942FC5254B5C0A0006B499 /* maply_pb_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maply_pb_decode.h; sourceTree = "<group>"; };
 		31943009254B77F00006B499 /* vector_tile.pb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vector_tile.pb.c; path = ../../../../common/WhirlyGlobeLib/src/vector_tile.pb.c; sourceTree = "<group>"; };
 		31A2B37E26AA136900221CFF /* Expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Expect.h; path = ../../../../common/WhirlyGlobeLib/include/Expect.h; sourceTree = "<group>"; };
+		31AC5B74286657AD00500A3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		31AC5B76286657D400500A3F /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = DEVELOPER_DIR; };
 		31C3A795282C63AE00E1F042 /* QuadTreeIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuadTreeIdentifier.h; path = ../../../../common/WhirlyGlobeLib/include/QuadTreeIdentifier.h; sourceTree = "<group>"; };
 		31C3A797282C645000E1F042 /* WhirlyEigen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhirlyEigen.h; path = ../../../../common/WhirlyGlobeLib/include/WhirlyEigen.h; sourceTree = "<group>"; };
 		31CAB8DD27920F4A00A5F744 /* GeographicLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GeographicLib.h; path = ../../../../common/WhirlyGlobeLib/include/GeographicLib.h; sourceTree = "<group>"; };
@@ -2745,15 +2610,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				310572022863C72D00B50828 /* MetalPerformanceShaders.framework in Frameworks */,
+				31AC5B77286657D400500A3F /* MetalPerformanceShaders.framework in Frameworks */,
+				31AC5B75286657AD00500A3F /* CoreGraphics.framework in Frameworks */,
 				310572032863C72D00B50828 /* Accelerate.framework in Frameworks */,
-				310572042863C72D00B50828 /* MetalKit.framework in Frameworks */,
 				310572052863C72D00B50828 /* Metal.framework in Frameworks */,
-				310572072863C72D00B50828 /* CoreText.framework in Frameworks */,
 				310572082863C72D00B50828 /* UIKit.framework in Frameworks */,
-				3105720B2863C72D00B50828 /* QuartzCore.framework in Frameworks */,
-				3105720C2863C72D00B50828 /* CoreGraphics.framework in Frameworks */,
-				3105720D2863C72D00B50828 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3235,18 +3096,6 @@
 		2B82B4AD1E82E2490095FB14 /* proj4 */ = {
 			isa = PBXGroup;
 			children = (
-				2B846ED621F1359200EF2A82 /* PJ_calcofi.c */,
-				2B846ED321F1356E00EF2A82 /* geod_interface.c */,
-				2B846ED221F1356E00EF2A82 /* geod_interface.h */,
-				2B82B4071E82E2490095FB14 /* pj_fwd3d.c */,
-				2B82B4081E82E2490095FB14 /* pj_inv3d.c */,
-				2B82B4091E82E2490095FB14 /* geodesic.c */,
-				2B82B40B1E82E2490095FB14 /* pj_fileapi.c */,
-				2B82B40C1E82E2490095FB14 /* pj_gc_reader.c */,
-				2B82B40D1E82E2490095FB14 /* pj_gridcatalog.c */,
-				2B82B40E1E82E2490095FB14 /* PJ_qsc.c */,
-				2B82B40F1E82E2490095FB14 /* PJ_sch.c */,
-				2B82B4101E82E2490095FB14 /* pj_strtod.c */,
 				2B82B4111E82E2490095FB14 /* aasincos.c */,
 				2B82B4121E82E2490095FB14 /* adjlon.c */,
 				2B82B4161E82E2490095FB14 /* dmstor.c */,
@@ -3254,7 +3103,10 @@
 				2B82B4181E82E2490095FB14 /* emess.h */,
 				2B82B4191E82E2490095FB14 /* geocent.c */,
 				2B82B41A1E82E2490095FB14 /* geocent.h */,
+				2B846ED321F1356E00EF2A82 /* geod_interface.c */,
+				2B846ED221F1356E00EF2A82 /* geod_interface.h */,
 				2B82B41B1E82E2490095FB14 /* geod_set.c */,
+				2B82B4091E82E2490095FB14 /* geodesic.c */,
 				2B82B41C1E82E2490095FB14 /* geodesic.h */,
 				2B82B41E1E82E2490095FB14 /* nad_cvt.c */,
 				2B82B41F1E82E2490095FB14 /* nad_init.c */,
@@ -3271,6 +3123,7 @@
 				2B82B42B1E82E2490095FB14 /* PJ_bipc.c */,
 				2B82B42C1E82E2490095FB14 /* PJ_boggs.c */,
 				2B82B42D1E82E2490095FB14 /* PJ_bonne.c */,
+				2B846ED621F1359200EF2A82 /* PJ_calcofi.c */,
 				2B82B42E1E82E2490095FB14 /* PJ_cass.c */,
 				2B82B42F1E82E2490095FB14 /* PJ_cc.c */,
 				2B82B4301E82E2490095FB14 /* PJ_cea.c */,
@@ -3294,16 +3147,20 @@
 				2B82B4421E82E2490095FB14 /* pj_errno.c */,
 				2B82B4431E82E2490095FB14 /* pj_factors.c */,
 				2B82B4441E82E2490095FB14 /* PJ_fahey.c */,
+				2B82B40B1E82E2490095FB14 /* pj_fileapi.c */,
 				2B82B4451E82E2490095FB14 /* PJ_fouc_s.c */,
 				2B82B4461E82E2490095FB14 /* pj_fwd.c */,
+				2B82B4071E82E2490095FB14 /* pj_fwd3d.c */,
 				2B82B4471E82E2490095FB14 /* PJ_gall.c */,
 				2B82B4481E82E2490095FB14 /* pj_gauss.c */,
+				2B82B40C1E82E2490095FB14 /* pj_gc_reader.c */,
 				2B82B4491E82E2490095FB14 /* pj_geocent.c */,
 				2B82B44A1E82E2490095FB14 /* PJ_geos.c */,
 				2B82B44B1E82E2490095FB14 /* PJ_gins8.c */,
 				2B82B44C1E82E2490095FB14 /* PJ_gn_sinu.c */,
 				2B82B44D1E82E2490095FB14 /* PJ_gnom.c */,
 				2B82B44E1E82E2490095FB14 /* PJ_goode.c */,
+				2B82B40D1E82E2490095FB14 /* pj_gridcatalog.c */,
 				2B82B44F1E82E2490095FB14 /* pj_gridinfo.c */,
 				2B82B4501E82E2490095FB14 /* pj_gridlist.c */,
 				2B82B4511E82E2490095FB14 /* PJ_gstmerc.c */,
@@ -3315,6 +3172,7 @@
 				2B82B4571E82E2490095FB14 /* pj_init.c */,
 				2B82B4581E82E2490095FB14 /* pj_initcache.c */,
 				2B82B4591E82E2490095FB14 /* pj_inv.c */,
+				2B82B4081E82E2490095FB14 /* pj_inv3d.c */,
 				2B82B45A1E82E2490095FB14 /* PJ_isea.c */,
 				2B82B45B1E82E2490095FB14 /* PJ_krovak.c */,
 				2B82B45C1E82E2490095FB14 /* PJ_labrd.c */,
@@ -3362,15 +3220,18 @@
 				2B82B4861E82E2490095FB14 /* PJ_putp4p.c */,
 				2B82B4871E82E2490095FB14 /* PJ_putp5.c */,
 				2B82B4881E82E2490095FB14 /* PJ_putp6.c */,
+				2B82B40E1E82E2490095FB14 /* PJ_qsc.c */,
 				2B82B4891E82E2490095FB14 /* pj_qsfn.c */,
 				2B82B48A1E82E2490095FB14 /* pj_release.c */,
 				2B82B48B1E82E2490095FB14 /* PJ_robin.c */,
 				2B82B48C1E82E2490095FB14 /* PJ_rpoly.c */,
+				2B82B40F1E82E2490095FB14 /* PJ_sch.c */,
 				2B82B48D1E82E2490095FB14 /* PJ_sconics.c */,
 				2B82B48E1E82E2490095FB14 /* PJ_somerc.c */,
 				2B82B48F1E82E2490095FB14 /* PJ_stere.c */,
 				2B82B4901E82E2490095FB14 /* PJ_sterea.c */,
 				2B82B4911E82E2490095FB14 /* pj_strerrno.c */,
+				2B82B4101E82E2490095FB14 /* pj_strtod.c */,
 				2B82B4921E82E2490095FB14 /* PJ_sts.c */,
 				2B82B4931E82E2490095FB14 /* PJ_tcc.c */,
 				2B82B4941E82E2490095FB14 /* PJ_tcea.c */,
@@ -3661,6 +3522,8 @@
 		2B84ED111F83FC5A00B34D73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31AC5B76286657D400500A3F /* MetalPerformanceShaders.framework */,
+				31AC5B74286657AD00500A3F /* CoreGraphics.framework */,
 				2B526BDB240DE04B00647336 /* MetalPerformanceShaders.framework */,
 				2B1806D622AED03300DD3DB1 /* Accelerate.framework */,
 				2B69987C228DE2EF00C31E3F /* MetalKit.framework */,
@@ -6184,266 +6047,133 @@
 			buildActionMask = 2147483647;
 			files = (
 				31056FEE2863C72D00B50828 /* MaplyMatrix.mm in Sources */,
-				31056FEF2863C72D00B50828 /* PJ_eck3.c in Sources */,
-				31056FF02863C72D00B50828 /* PJ_larr.c in Sources */,
 				31056FF42863C72D00B50828 /* MaplyCoordinate.mm in Sources */,
 				31056FF62863C72D00B50828 /* Identifiable.cpp in Sources */,
 				31056FFA2863C72D00B50828 /* Proj4CoordSystem.cpp in Sources */,
-				310570002863C72D00B50828 /* PJ_eck2.c in Sources */,
-				310570012863C72D00B50828 /* PJ_eck5.c in Sources */,
 				310570022863C72D00B50828 /* LoadedTileNew.cpp in Sources */,
-				310570032863C72D00B50828 /* PJ_airy.c in Sources */,
-				310570052863C72D00B50828 /* DictionaryC.cpp in Sources */,
-				310570062863C72D00B50828 /* pj_mutex.c in Sources */,
-				310570072863C72D00B50828 /* dmstor.c in Sources */,
+				31AC5BC528666B2D00500A3F /* RawData_NSData.mm in Sources */,
 				310570082863C72D00B50828 /* QuadLoaderReturn.cpp in Sources */,
-				3105700D2863C72D00B50828 /* PJ_laea.c in Sources */,
-				310570122863C72D00B50828 /* PJ_lagrng.c in Sources */,
-				310570132863C72D00B50828 /* pj_deriv.c in Sources */,
-				310570162863C72D00B50828 /* RawPNGImage.cpp in Sources */,
-				310570182863C72D00B50828 /* mesh.cpp in Sources */,
-				310570192863C72D00B50828 /* pj_mlfn.c in Sources */,
-				3105701B2863C72D00B50828 /* adjlon.c in Sources */,
-				3105701C2863C72D00B50828 /* PJ_qsc.c in Sources */,
-				3105701D2863C72D00B50828 /* PJ_nsper.c in Sources */,
+				31AC5BBF2866662300500A3F /* pj_msfn.c in Sources */,
 				3105701E2863C72D00B50828 /* QuadImageFrameLoader_iOS.mm in Sources */,
 				3105701F2863C72D00B50828 /* BasicDrawableBuilderMTL.mm in Sources */,
-				310570232863C72D00B50828 /* pj_initcache.c in Sources */,
-				310570262863C72D00B50828 /* PJ_labrd.c in Sources */,
+				31AC5BBA286665B100500A3F /* geocent.c in Sources */,
 				3105741C2864ABFE00B50828 /* MaplyComponentObject.mm in Sources */,
 				3105702A2863C72D00B50828 /* Texture.cpp in Sources */,
 				3105702B2863C72D00B50828 /* BasicDrawableMTL.mm in Sources */,
+				31AC5BC428666B0100500A3F /* Dictionary_NSDictionary.mm in Sources */,
+				31AC5BB62866656F00500A3F /* pj_fwd3d.c in Sources */,
 				3105702F2863C72D00B50828 /* Drawable.cpp in Sources */,
 				310570312863C72D00B50828 /* MaplyView.cpp in Sources */,
-				310570322863C72D00B50828 /* pj_malloc.c in Sources */,
-				310570332863C72D00B50828 /* pj_param.c in Sources */,
-				310570342863C72D00B50828 /* PJ_cc.c in Sources */,
-				310570362863C72D00B50828 /* PJ_gn_sinu.c in Sources */,
-				310570372863C72D00B50828 /* PJ_wink1.c in Sources */,
-				3105703A2863C72D00B50828 /* pj_gridcatalog.c in Sources */,
-				3105703B2863C72D00B50828 /* PJ_eqc.c in Sources */,
 				3105703E2863C72D00B50828 /* MaplyCoordinateSystem.mm in Sources */,
-				310570412863C72D00B50828 /* PJ_cass.c in Sources */,
-				310570432863C72D00B50828 /* PJ_tmerc.c in Sources */,
 				310570442863C72D00B50828 /* NSString+Stuff.mm in Sources */,
 				310570462863C72D00B50828 /* Program.cpp in Sources */,
 				3105704B2863C72D00B50828 /* MaplyControllerLayer.mm in Sources */,
-				3105704D2863C72D00B50828 /* PJ_bonne.c in Sources */,
-				310570512863C72D00B50828 /* PJ_urmfps.c in Sources */,
-				310570522863C72D00B50828 /* PJ_hatano.c in Sources */,
-				31AC5B732866422C00500A3F /* NSDictionary+Stuff.m in Sources */,
-				310570542863C72D00B50828 /* lodepng.cpp in Sources */,
-				310570562863C72D00B50828 /* pj_factors.c in Sources */,
 				310570592863C72D00B50828 /* ImageTile_iOS.mm in Sources */,
 				3105705A2863C72D00B50828 /* VertexAttribute.cpp in Sources */,
+				31AC5BB72866657D00500A3F /* pj_inv3d.c in Sources */,
 				3105705B2863C72D00B50828 /* QuadSamplingController.cpp in Sources */,
-				3105705D2863C72D00B50828 /* pj_inv3d.c in Sources */,
-				3105705E2863C72D00B50828 /* pj_list.c in Sources */,
-				3105705F2863C72D00B50828 /* nad_cvt.c in Sources */,
-				310570622863C72D00B50828 /* PJ_bipc.c in Sources */,
-				310570642863C72D00B50828 /* pj_gridinfo.c in Sources */,
 				310570652863C72D00B50828 /* MaplyShader.mm in Sources */,
-				310570662863C72D00B50828 /* PJ_mbtfpq.c in Sources */,
-				310570672863C72D00B50828 /* PJ_nell.c in Sources */,
 				310570682863C72D00B50828 /* QuadTreeNew.cpp in Sources */,
-				310570692863C72D00B50828 /* PJ_crast.c in Sources */,
 				3105706A2863C72D00B50828 /* RenderTargetMTL.mm in Sources */,
-				3105706C2863C72D00B50828 /* PJ_putp2.c in Sources */,
-				3105706E2863C72D00B50828 /* PJ_calcofi.c in Sources */,
 				3105706F2863C72D00B50828 /* FlatMath.cpp in Sources */,
-				310570702863C72D00B50828 /* pj_auth.c in Sources */,
-				310570722863C72D00B50828 /* PJ_nocol.c in Sources */,
 				310570742863C72D00B50828 /* BasicDrawable.cpp in Sources */,
+				31AC5BC02866663400500A3F /* adjlon.c in Sources */,
 				3105707A2863C72D00B50828 /* UIColor+Stuff.mm in Sources */,
-				3105707B2863C72D00B50828 /* PJ_robin.c in Sources */,
+				31AC5BAF2866648A00500A3F /* pj_datum_set.c in Sources */,
 				3105707C2863C72D00B50828 /* QuadSamplingParams.cpp in Sources */,
-				3105707D2863C72D00B50828 /* proj_mdist.c in Sources */,
-				3105707E2863C72D00B50828 /* PJ_putp4p.c in Sources */,
-				310570802863C72D00B50828 /* PJ_wag3.c in Sources */,
-				310570812863C72D00B50828 /* PJ_sch.c in Sources */,
-				310570822863C72D00B50828 /* pj_ellps.c in Sources */,
-				310570852863C72D00B50828 /* PJ_lask.c in Sources */,
-				310570872863C72D00B50828 /* sweep.cpp in Sources */,
-				310570882863C72D00B50828 /* pj_qsfn.c in Sources */,
 				3105708D2863C72D00B50828 /* QuadImageFrameLoader.cpp in Sources */,
-				3105708F2863C72D00B50828 /* PJ_wag7.c in Sources */,
+				31AC5BAE2866646600500A3F /* pj_geocent.c in Sources */,
 				310570932863C72D00B50828 /* VertexAttributeMTL.mm in Sources */,
 				310570952863C72D00B50828 /* BaseInfo.cpp in Sources */,
 				310570972863C72D00B50828 /* StringIndexer.cpp in Sources */,
-				3105709B2863C72D00B50828 /* PJ_putp6.c in Sources */,
-				3105709F2863C72D00B50828 /* pj_gridlist.c in Sources */,
 				310570A12863C72D00B50828 /* BasicDrawableInstance.cpp in Sources */,
-				310570A22863C72D00B50828 /* PJ_sterea.c in Sources */,
-				310570A62863C72D00B50828 /* tess.cpp in Sources */,
-				310570A72863C72D00B50828 /* PJ_tpeqd.c in Sources */,
-				310570A82863C72D00B50828 /* pj_geocent.c in Sources */,
 				310570AB2863C72D00B50828 /* CoordSystem.cpp in Sources */,
+				31AC5BC12866664B00500A3F /* pj_ellps.c in Sources */,
+				31AC5BB42866654A00500A3F /* pj_mutex.c in Sources */,
+				31AC5BA52866639B00500A3F /* pj_ctx.c in Sources */,
+				31AC5BA6286663A300500A3F /* pj_errno.c in Sources */,
 				310570AF2863C72D00B50828 /* Platform.mm in Sources */,
-				310570B42863C72D00B50828 /* PJ_stere.c in Sources */,
 				310570B52863C72D00B50828 /* RenderTarget.cpp in Sources */,
-				310570B62863C72D00B50828 /* pj_inv.c in Sources */,
-				310570B72863C72D00B50828 /* PJ_lcca.c in Sources */,
-				310570B92863C72D00B50828 /* pj_fileapi.c in Sources */,
 				310570BA2863C72D00B50828 /* MaplyRenderController.mm in Sources */,
-				310570BB2863C72D00B50828 /* PJ_ocea.c in Sources */,
 				310570BD2863C72D00B50828 /* GlobeMath.cpp in Sources */,
-				310570BE2863C72D00B50828 /* pj_strerrno.c in Sources */,
-				310570BF2863C72D00B50828 /* PJ_ortho.c in Sources */,
-				310570C02863C72D00B50828 /* PJ_cea.c in Sources */,
-				310570C22863C72D00B50828 /* nad_intr.c in Sources */,
-				310570C32863C72D00B50828 /* PJ_putp3.c in Sources */,
 				310570C72863C72D00B50828 /* PerformanceTimer.cpp in Sources */,
-				310570C92863C72D00B50828 /* PJ_wag2.c in Sources */,
-				310570CA2863C72D00B50828 /* PJ_hammer.c in Sources */,
-				310570CB2863C72D00B50828 /* pj_pr_list.c in Sources */,
 				310570CF2863C72D00B50828 /* LayerViewWatcher.mm in Sources */,
-				310574D22865180400B50828 /* PJ_bacon.c in Sources */,
-				310570D02863C72D00B50828 /* PJ_geos.c in Sources */,
 				310570D42863C72D00B50828 /* MaplyVertexAttribute.mm in Sources */,
-				310570D82863C72D00B50828 /* PJ_wink2.c in Sources */,
+				31AC5BA12866635D00500A3F /* pj_transform.c in Sources */,
 				310570D92863C72D00B50828 /* DrawableMTL.mm in Sources */,
 				310570DA2863C72D00B50828 /* ChangeRequest.cpp in Sources */,
-				310570DC2863C72D00B50828 /* emess.c in Sources */,
 				310570DE2863C72D00B50828 /* ShapeManager.cpp in Sources */,
 				3105741B2863E66000B50828 /* MaplyActiveObject.mm in Sources */,
 				310570E12863C72D00B50828 /* MaplySharedAttributes.mm in Sources */,
 				310574D428651D0300B50828 /* UIImage+Stuff.mm in Sources */,
-				310570E32863C72D00B50828 /* pj_release.c in Sources */,
-				310570E72863C72D00B50828 /* pj_msfn.c in Sources */,
-				310570EB2863C72D00B50828 /* PJ_eck4.c in Sources */,
-				310570EC2863C72D00B50828 /* PJ_putp5.c in Sources */,
-				310570ED2863C72D00B50828 /* PJ_denoy.c in Sources */,
-				310570F12863C72D00B50828 /* pj_units.c in Sources */,
+				31AC5BB32866650700500A3F /* PJ_stere.c in Sources */,
 				310570F32863C72D00B50828 /* MaplyQuadSampler.mm in Sources */,
 				310570F42863C72D00B50828 /* MaplyRemoteTileFetcher.mm in Sources */,
-				310570F52863C72D00B50828 /* pj_ctx.c in Sources */,
 				3105741F2864AC2800B50828 /* ComponentManager_iOS.mm in Sources */,
 				310570F62863C72D00B50828 /* Scene.cpp in Sources */,
-				310570F72863C72D00B50828 /* PJ_chamb.c in Sources */,
-				310570F82863C72D00B50828 /* RawData.cpp in Sources */,
-				310570FB2863C72D00B50828 /* PJ_igh.c in Sources */,
 				310570FC2863C72D00B50828 /* SceneRendererMTL.mm in Sources */,
-				310570FD2863C72D00B50828 /* aasincos.c in Sources */,
 				310570FF2863C72D00B50828 /* ShapeDrawableBuilder.cpp in Sources */,
-				310571002863C72D00B50828 /* PJ_moll.c in Sources */,
-				310571022863C72D00B50828 /* PJ_isea.c in Sources */,
 				310571032863C72D00B50828 /* QuadDisplayControllerNew.cpp in Sources */,
+				31AC5BAB2866644600500A3F /* pj_strtod.c in Sources */,
+				31AC5BB02866648E00500A3F /* pj_datums.c in Sources */,
 				310571042863C72D00B50828 /* MaplyImageTile.mm in Sources */,
-				310571082863C72D00B50828 /* PJ_tcea.c in Sources */,
-				3105710B2863C72D00B50828 /* PJ_omerc.c in Sources */,
+				31AC5BB2286664CF00500A3F /* PJ_eqc.c in Sources */,
+				31AC5BBD286665FD00500A3F /* PJ_lcc.c in Sources */,
+				31AC5BA32866638E00500A3F /* pj_log.c in Sources */,
 				3105710F2863C72D00B50828 /* SceneRenderer.cpp in Sources */,
-				310571102863C72D00B50828 /* clipper.cpp in Sources */,
-				310571112863C72D00B50828 /* priorityq.cpp in Sources */,
-				310571152863C72D00B50828 /* pj_apply_gridshift.c in Sources */,
+				31AC5BAC2866645300500A3F /* pj_pr_list.c in Sources */,
 				310571172863C72D00B50828 /* MaplyTexture.mm in Sources */,
-				310571182863C72D00B50828 /* PJ_lsat.c in Sources */,
-				310571192863C72D00B50828 /* dict.cpp in Sources */,
 				3105711F2863C72D00B50828 /* WGCoordinate.mm in Sources */,
-				310571212863C72D00B50828 /* PJ_fouc_s.c in Sources */,
 				310571282863C72D00B50828 /* LayerThread.mm in Sources */,
 				310571292863C72D00B50828 /* MaplyRenderTarget.mm in Sources */,
-				3105712A2863C72D00B50828 /* pj_gauss.c in Sources */,
-				3105712B2863C72D00B50828 /* pj_datum_set.c in Sources */,
 				3105712D2863C72D00B50828 /* TextureMTL.mm in Sources */,
-				3105712E2863C72D00B50828 /* proj_etmerc.c in Sources */,
-				310571332863C72D00B50828 /* pj_init.c in Sources */,
 				310571342863C72D00B50828 /* ImageTile.cpp in Sources */,
-				310571352863C72D00B50828 /* geod_set.c in Sources */,
-				310571382863C72D00B50828 /* geocent.c in Sources */,
-				3105713A2863C72D00B50828 /* PJ_gnom.c in Sources */,
-				3105713C2863C72D00B50828 /* PJ_somerc.c in Sources */,
-				310571412863C72D00B50828 /* PJ_nzmg.c in Sources */,
-				310571422863C72D00B50828 /* PJ_loxim.c in Sources */,
-				310571442863C72D00B50828 /* PJ_eck1.c in Sources */,
-				310571492863C72D00B50828 /* pj_transform.c in Sources */,
-				3105714B2863C72D00B50828 /* geom.cpp in Sources */,
-				3105714C2863C72D00B50828 /* pj_zpoly1.c in Sources */,
-				3105714F2863C72D00B50828 /* PJ_rpoly.c in Sources */,
-				310571512863C72D00B50828 /* PJ_aeqd.c in Sources */,
+				31AC5BAA286663D300500A3F /* pj_inv.c in Sources */,
 				31AC5B712866418000500A3F /* MaplyBaseInteractionLayer.mm in Sources */,
-				310571522863C72D00B50828 /* pj_open_lib.c in Sources */,
-				310571532863C72D00B50828 /* pj_tsfn.c in Sources */,
-				310571542863C72D00B50828 /* pj_ell_set.c in Sources */,
-				310571592863C72D00B50828 /* PJ_vandg4.c in Sources */,
-				3105715B2863C72D00B50828 /* pj_gc_reader.c in Sources */,
+				31AC5BA8286663B900500A3F /* pj_malloc.c in Sources */,
 				3105715D2863C72D00B50828 /* MaplyQuadImageFrameLoader.mm in Sources */,
-				3105715E2863C72D00B50828 /* nad_init.c in Sources */,
-				3105715F2863C72D00B50828 /* pj_log.c in Sources */,
-				310571612863C72D00B50828 /* PJ_oea.c in Sources */,
-				310571622863C72D00B50828 /* pj_fwd3d.c in Sources */,
 				310571632863C72D00B50828 /* MaplyQuadImageLoader.mm in Sources */,
-				310571642863C72D00B50828 /* PJ_mbt_fps.c in Sources */,
-				310571672863C72D00B50828 /* pj_strtod.c in Sources */,
-				3105716D2863C72D00B50828 /* PJ_aitoff.c in Sources */,
+				31AC5BC728666B4C00500A3F /* DictionaryC.cpp in Sources */,
+				31AC5BA42866639300500A3F /* pj_init.c in Sources */,
+				31AC5BA22866638100500A3F /* pj_param.c in Sources */,
 				3105716F2863C72D00B50828 /* WhirlyGeometry.cpp in Sources */,
-				310571752863C72D00B50828 /* geodesic.c in Sources */,
 				310571762863C72D00B50828 /* BasicDrawableInstanceMTL.mm in Sources */,
-				31AC5B722866422C00500A3F /* Dictionary_NSDictionary.mm in Sources */,
-				310571772863C72D00B50828 /* Tesselator.cpp in Sources */,
-				310571792863C72D00B50828 /* PJ_ob_tran.c in Sources */,
-				3105717A2863C72D00B50828 /* PJ_nell_h.c in Sources */,
-				3105717B2863C72D00B50828 /* vector1.c in Sources */,
+				31AC5BBB286665C700500A3F /* dmstor.c in Sources */,
 				3105717D2863C72D00B50828 /* WrapperMTL.mm in Sources */,
-				3105717E2863C72D00B50828 /* PJ_eqdc.c in Sources */,
-				310571832863C72D00B50828 /* PJ_gins8.c in Sources */,
 				310574CA2864D0E700B50828 /* WhirlyVector.cpp in Sources */,
 				310571852863C72D00B50828 /* WhirlyKitView.cpp in Sources */,
-				310571892863C72D00B50828 /* PJ_poly.c in Sources */,
-				3105718D2863C72D00B50828 /* PJ_goode.c in Sources */,
 				3105718E2863C72D00B50828 /* ScreenImportance.cpp in Sources */,
-				310571912863C72D00B50828 /* PJ_gstmerc.c in Sources */,
-				310571952863C72D00B50828 /* PJ_aea.c in Sources */,
-				310571972863C72D00B50828 /* rtodms.c in Sources */,
-				310571992863C72D00B50828 /* pj_latlong.c in Sources */,
-				3105719A2863C72D00B50828 /* pj_phi2.c in Sources */,
 				3105719C2863C72D00B50828 /* ProgramMTL.mm in Sources */,
+				31AC5BBC286665F300500A3F /* pj_phi2.c in Sources */,
 				3105719D2863C72D00B50828 /* MaplyQuadLoader.mm in Sources */,
+				31AC5BB82866659200500A3F /* pj_ell_set.c in Sources */,
 				3105719E2863C72D00B50828 /* MapView_iOS.mm in Sources */,
-				310571A12863C72D00B50828 /* PJ_vandg.c in Sources */,
-				310571A22863C72D00B50828 /* pj_apply_vgridshift.c in Sources */,
 				310571A32863C72D00B50828 /* MaplyVariableTarget.mm in Sources */,
+				31AC5BBE2866661900500A3F /* pj_tsfn.c in Sources */,
 				310571A72863C72D00B50828 /* MaplyTileSourceNew.mm in Sources */,
 				310571A82863C72D00B50828 /* MaplyShape.mm in Sources */,
 				310571AB2863C72D00B50828 /* SphericalMercator.cpp in Sources */,
 				310571AC2863C72D00B50828 /* QuadTileBuilder.cpp in Sources */,
-				310571AD2863C72D00B50828 /* Dictionary.cpp in Sources */,
+				31AC5BC828666B5F00500A3F /* Dictionary.cpp in Sources */,
 				310571AE2863C72D00B50828 /* MaplyFlatView.cpp in Sources */,
 				310571AF2863C72D00B50828 /* Lighting.cpp in Sources */,
 				310571B02863C72D00B50828 /* BasicDrawableBuilder.cpp in Sources */,
-				310571B22863C72D00B50828 /* pj_datums.c in Sources */,
 				310571B72863C72D00B50828 /* SceneMTL.mm in Sources */,
-				310571BA2863C72D00B50828 /* PJ_tcc.c in Sources */,
-				310571BB2863C72D00B50828 /* PJ_natearth.c in Sources */,
-				310571BC2863C72D00B50828 /* PJ_lcc.c in Sources */,
-				310571BD2863C72D00B50828 /* PJ_merc.c in Sources */,
+				31AC5BC628666B3400500A3F /* RawData.cpp in Sources */,
 				310571BE2863C72D00B50828 /* wkDefaultShaders.metal in Sources */,
+				31AC5BB52866656400500A3F /* PJ_merc.c in Sources */,
+				31AC5BB9286665A200500A3F /* pj_initcache.c in Sources */,
 				310574212864AC2800B50828 /* ComponentManager.cpp in Sources */,
-				310571C32863C72D00B50828 /* bucketalloc.cpp in Sources */,
 				310571C52863C72D00B50828 /* QuadDisplayLayerNew.mm in Sources */,
-				310571C72863C72D00B50828 /* PJ_collg.c in Sources */,
-				310571C82863C72D00B50828 /* pj_fwd.c in Sources */,
-				310571CC2863C72D00B50828 /* PJ_vandg2.c in Sources */,
-				310571D52863C72D00B50828 /* PJ_mill.c in Sources */,
+				31AC5BC928666B9600500A3F /* NSDictionary+Stuff.m in Sources */,
+				31AC5BA9286663CE00500A3F /* pj_fwd.c in Sources */,
 				310574CD2864D36F00B50828 /* VectorData.cpp in Sources */,
-				310571D62863C72D00B50828 /* PJ_gall.c in Sources */,
-				310571DB2863C72D00B50828 /* PJ_august.c in Sources */,
-				310571DE2863C72D00B50828 /* geod_interface.c in Sources */,
-				310571DF2863C72D00B50828 /* PJ_healpix.c in Sources */,
-				310571E32863C72D00B50828 /* PJ_boggs.c in Sources */,
-				310571E42863C72D00B50828 /* PJ_mod_ster.c in Sources */,
 				310571E52863C72D00B50828 /* BasicDrawableInstanceBuilder.cpp in Sources */,
-				310571E72863C72D00B50828 /* PJ_fahey.c in Sources */,
 				310571E82863C72D00B50828 /* BasicDrawableInstanceBuilderMTL.mm in Sources */,
-				310571E92863C72D00B50828 /* PJ_mbtfpp.c in Sources */,
-				310571EA2863C72D00B50828 /* RawData_NSData.mm in Sources */,
-				310571EF2863C72D00B50828 /* PJ_urm5.c in Sources */,
-				310571F12863C72D00B50828 /* PJ_sconics.c in Sources */,
-				310571F52863C72D00B50828 /* PJ_krovak.c in Sources */,
+				31AC5BAD2866645A00500A3F /* pj_list.c in Sources */,
+				31AC5BB1286664A500500A3F /* pj_units.c in Sources */,
 				310571F82863C72D00B50828 /* WhirlyKitLog.mm in Sources */,
-				310571F92863C72D00B50828 /* PJ_sts.c in Sources */,
-				310571FA2863C72D00B50828 /* pj_errno.c in Sources */,
-				310571FF2863C72D00B50828 /* PJ_imw_p.c in Sources */,
-				310572002863C72D00B50828 /* proj_rouss.c in Sources */,
+				31AC5BA7286663B500500A3F /* pj_latlong.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
