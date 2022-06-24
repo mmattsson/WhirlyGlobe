@@ -152,8 +152,10 @@
 - (void)clear
 {
     const auto vc = viewC;
+#if !MAPLY_MINIMAL
     if (_renderTarget && [vc isKindOfClass:[MaplyBaseViewController class]])
         [(MaplyBaseViewController *)vc clearRenderTarget:_renderTarget mode:MaplyThreadCurrent];
+#endif //!MAPLY_MINIMAL
 }
 
 /// Stop rendering to the target and release everything
