@@ -41,6 +41,7 @@ using namespace Eigen;
     // This view is used when we're not provided with a real view
     PassThroughCoordSystemRef coordSys;
     GeneralCoordSystemDisplayAdapterRef genCoordAdapter;
+    CoordSystemDisplayAdapterRef coordAdapterRef;
     Maply::FlatViewRef flatView;
 
     bool offlineMode;
@@ -97,6 +98,35 @@ using namespace Eigen;
     [self loadSetup_scene:[[MaplyBaseInteractionLayer alloc] initWithView:visualView]];
     [self setupShaders];
         
+    return self;
+}
+
+- (instancetype)initWithSize:(CGSize)size mode:(MaplyRenderType)renderType mapView:(int)_
+{
+    const auto originLon = 0.0;
+    const auto ll = GeoCoord::CoordFromDegrees(-180.0,-90.0);
+    const auto ur = GeoCoord::CoordFromDegrees(180.0,90.0);
+    coordAdapterRef = std::make_shared<SphericalMercatorDisplayAdapter>(originLon, ll, ur);
+    coordAdapter = coordAdapterRef.get();
+    auto mapView = std::make_shared<Maply::MapView>(coordAdapter);
+    visualView = mapView;
+    mapView->setContinuousZoom(true);
+    //mapView->setWrap(_viewWrap);
+    //mapView->addWatcher(&animWrapper);
+
+    if (!(self = [self initWithSize:size mode:renderType]))
+    {
+        return nil;
+    }
+
+    if (auto sr = dynamic_cast<SceneRendererMTL*>(sceneRenderer.get()))
+    {
+        sr->offscreenBlendEnable = true;
+        sr->getRenderTargets().front()->blendEnable = true;
+    }
+
+    [self setHints:@{kMaplyRendererLightingMode: @"none"}];
+
     return self;
 }
 

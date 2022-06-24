@@ -1007,6 +1007,9 @@ typedef NS_ENUM(NSInteger, MaplyRenderType) {
 /// Initialize as an offline renderer of a given target size with default renderer (Metal)
 - (instancetype __nullable)initWithSize:(CGSize)size;
 
+/// Initialize as an offline renderer with a map view
+- (instancetype __nullable)initWithSize:(CGSize)size mode:(MaplyRenderType)renderType mapView:(int)mapView;
+
 /// If set up in offline mode, this is how we draw
 - (UIImage * __nullable)renderToImage;
 

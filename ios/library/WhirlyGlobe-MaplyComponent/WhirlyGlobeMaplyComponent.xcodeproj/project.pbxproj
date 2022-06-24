@@ -6761,6 +6761,9 @@
 					__IPHONEOS__,
 					__USE_SDL_GLES__,
 				);
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					../WhirlyGlobeLib/include/,
 					../../../common/local_libs/eigen/,
@@ -6800,6 +6803,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mousebirdconsulting.WhirlyGlobeMaplyComponent;
 				PRODUCT_NAME = WhirlyGlobe;
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wincomplete-implementation",
+					"-Wprotocol",
+				);
 			};
 			name = Debug;
 		};
@@ -6819,6 +6826,9 @@
 					__IPHONEOS__,
 					__USE_SDL_GLES__,
 				);
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					../WhirlyGlobeLib/include/,
 					../../../common/local_libs/eigen/,
@@ -6858,6 +6868,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mousebirdconsulting.WhirlyGlobeMaplyComponent;
 				PRODUCT_NAME = WhirlyGlobe;
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wincomplete-implementation",
+					"-Wprotocol",
+				);
 			};
 			name = Release;
 		};
