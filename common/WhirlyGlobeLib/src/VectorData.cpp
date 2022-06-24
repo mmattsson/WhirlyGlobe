@@ -28,6 +28,7 @@
 
 namespace WhirlyKit
 {
+
 using TDefInt = detail::TDefaultIntermediate;
 
 template <typename T, typename TRet = double, typename TInt = TDefInt>
@@ -60,6 +61,8 @@ TRet CalcLoopArea(const std::vector<T,Eigen::aligned_allocator<T>> &loop)
 {
     return CalcLoopArea<T,TRet,TInt>(loop,loop.size());
 }
+
+#if !MAPLY_MINIMAL
 
 // Calculate the centroid of a loop when the area is already known
 template <typename T, typename TInt>
@@ -122,7 +125,9 @@ T CalcCenterOfMass(const std::vector<T,Eigen::aligned_allocator<T>> &loop)
 
 // Export specific instantiations of the templates above.
 template double CalcLoopArea<Point2f,double,TDefInt>(const VectorRing&);
+#endif //!MAPLY_MINIMAL
 template double CalcLoopArea<Point2d,double,TDefInt>(const Point2dVector&);
+#if !MAPLY_MINIMAL
 template Point2f CalcLoopCentroid<typename VectorRing::value_type,TDefInt>(const VectorRing&);
 template Point2f CalcLoopCentroid<typename VectorRing::value_type,TDefInt>(const VectorRing&, double);
 template Point2d CalcLoopCentroid<typename Point2dVector::value_type,TDefInt>(const Point2dVector&);
@@ -317,6 +322,7 @@ void SubdivideEdgesToSurfaceGC(const VectorRing &inPts,Point3dVector &outPts,boo
         subdivideToSurfaceRecurseGC(dp0,dp1,outPts,adapter,eps2,surfOffset,minPts);
     }
 }
+#endif //!MAPLY_MINIMAL
 
 VectorShape::VectorShape()
 {

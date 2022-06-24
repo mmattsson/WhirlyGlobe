@@ -1504,10 +1504,10 @@
 		31AC5BC12866664B00500A3F /* pj_ellps.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B43F1E82E2490095FB14 /* pj_ellps.c */; };
 		31AC5BC428666B0100500A3F /* Dictionary_NSDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133D21FA91A4006AA344 /* Dictionary_NSDictionary.mm */; };
 		31AC5BC528666B2D00500A3F /* RawData_NSData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133521F93969006AA344 /* RawData_NSData.mm */; };
-		31AC5BC628666B3400500A3F /* RawData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132F21F936CD006AA344 /* RawData.cpp */; };
 		31AC5BC728666B4C00500A3F /* DictionaryC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6FA67254B47AF00FD8374 /* DictionaryC.cpp */; };
 		31AC5BC828666B5F00500A3F /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23133921F942E1006AA344 /* Dictionary.cpp */; };
 		31AC5BC928666B9600500A3F /* NSDictionary+Stuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B54A1E82E2490095FB14 /* NSDictionary+Stuff.m */; };
+		31AC5BCA2866769300500A3F /* RawData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23132F21F936CD006AA344 /* RawData.cpp */; };
 		31C3A796282C63AE00E1F042 /* QuadTreeIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A795282C63AE00E1F042 /* QuadTreeIdentifier.h */; };
 		31C3A798282C645000E1F042 /* WhirlyEigen.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A797282C645000E1F042 /* WhirlyEigen.h */; };
 		31CAB8DF2792126A00A5F744 /* GeographicLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31CAB8DE2792126A00A5F744 /* GeographicLib.cpp */; };
@@ -6078,6 +6078,7 @@
 				3105706F2863C72D00B50828 /* FlatMath.cpp in Sources */,
 				310570742863C72D00B50828 /* BasicDrawable.cpp in Sources */,
 				31AC5BC02866663400500A3F /* adjlon.c in Sources */,
+				31AC5BCA2866769300500A3F /* RawData.cpp in Sources */,
 				3105707A2863C72D00B50828 /* UIColor+Stuff.mm in Sources */,
 				31AC5BAF2866648A00500A3F /* pj_datum_set.c in Sources */,
 				3105707C2863C72D00B50828 /* QuadSamplingParams.cpp in Sources */,
@@ -6159,7 +6160,6 @@
 				310571AF2863C72D00B50828 /* Lighting.cpp in Sources */,
 				310571B02863C72D00B50828 /* BasicDrawableBuilder.cpp in Sources */,
 				310571B72863C72D00B50828 /* SceneMTL.mm in Sources */,
-				31AC5BC628666B3400500A3F /* RawData.cpp in Sources */,
 				310571BE2863C72D00B50828 /* wkDefaultShaders.metal in Sources */,
 				31AC5BB52866656400500A3F /* PJ_merc.c in Sources */,
 				31AC5BB9286665A200500A3F /* pj_initcache.c in Sources */,
