@@ -22,47 +22,111 @@
 #include <string>
 #import "WhirlyKitLog.h"
 #import "RawPNGImage.h"
+
+// Note: These also need to be set on the compiler options for lodepng.cpp
+//       in order to actually exclude the un-used code from the build.
+//#define LODEPNG_COMPILE_PNG
+//#define LODEPNG_COMPILE_ZLIB
+//#define LODEPNG_COMPILE_DECODER
+#define LODEPNG_NO_COMPILE_ENCODER
+#define LODEPNG_NO_COMPILE_DISK
+// Note that this disables color profiles (ICC, gamma, whitepoint), background color for
+// transparent pixels, text chunks, modifiation time, extension and unrecognized chunks,
+// but *not* transparent color-key (tRNS)
+#define LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS
+#define LODEPNG_NO_COMPILE_ERROR_TEXT
+//#define LODEPNG_COMPILE_ALLOCATORS
+#define LODEPNG_NO_COMPILE_CRC  // We'll use the one from libz provided by the system
+#define LODEPNG_NO_COMPILE_CPP  // We'll use the C API
 #import "lodepng.h"
+
+// Use zlib's crc32
+#import <zlib.h>
+unsigned lodepng_crc32(const unsigned char* buffer, size_t length)
+{
+    return crc32_z(crc32(0L, Z_NULL, 0), buffer, length);
+}
 
 namespace WhirlyKit
 {
+
+static int getByteWidth(const LodePNGState& pngState)
+{
+    switch (pngState.info_png.color.colortype)
+    {
+        case LCT_GREY:  return 1 * pngState.info_raw.bitdepth / 8;
+        case LCT_RGB:   return 3 * pngState.info_raw.bitdepth / 8;
+        case LCT_RGBA:  return 4 * pngState.info_raw.bitdepth / 8;
+        default:        return 0;
+    }
+}
 
 unsigned char *RawPNGImageLoaderInterpreter(unsigned int &width,unsigned int &height,
                                           const unsigned char *data,size_t length,
                                           const std::vector<int> &valueMap,
                                           int &byteWidth,
-                                          unsigned int &err)
+                                          unsigned int &err,
+                                          std::string* errStr)
 {
     unsigned char *outData = NULL;
-
-    try {
+    try
+    {
         LodePNGState pngState;
         lodepng_state_init(&pngState);
         err = lodepng_inspect(&width, &height, &pngState, data, length);
-        if (pngState.info_png.color.colortype == LCT_GREY) {
-            byteWidth = 1;
-            err = lodepng_decode_memory(&outData, &width, &height, data, length, LCT_GREY, 8);
-        } else {
-            byteWidth = 4;
-            err = lodepng_decode_memory(&outData, &width, &height, data, length, LCT_RGBA, 8);
+        if (!err)
+        {
+            byteWidth = getByteWidth(pngState);
+            err = lodepng_decode_memory(&outData, &width, &height, data, length,
+                                        pngState.info_png.color.colortype,
+                                        pngState.info_raw.bitdepth);
+        }
+        if (!err && byteWidth < 1)
+        {
+            if (errStr)
+            {
+                *errStr = "Unsupported image type";
+            }
+            err = -1;
         }
     }
-    catch (const std::exception &ex) {
+    catch (const std::exception &ex)
+    {
         wkLogLevel(Error, "Exception in MaplyQuadImageLoader::dataForTile: %s", ex.what());
-        err = -1;
+        if (errStr)
+        {
+            *errStr = ex.what();
+        }
+        err = -2;
     }
-    catch (...) {
+    catch (...)
+    {
         wkLogLevel(Error, "Exception in MaplyQuadImageLoader::dataForTile");
-        err = -1;
+        if (errStr)
+        {
+            *errStr = "Unknown exception";
+        }
+        err = -3;
     }
-    
+
+#if defined(LODEPNG_COMPILE_ERROR_TEXT)
+    if (err > 0 && errStr)
+    {
+        *errStr = lodepng_error_text(err);
+    }
+#endif
+
     // Remap data values
-    if (byteWidth == 1 && !valueMap.empty()) {
+    if (byteWidth == 1 && !valueMap.empty())
+    {
         unsigned char *data = outData;
-        for (unsigned int ii=0;ii<width*height;ii++) {
+        for (unsigned int ii=0;ii<width*height;ii++)
+        {
             int newVal = valueMap[*data];
             if (newVal >= 0)
+            {
                 *data = newVal;
+            }
             data++;
         }
     }

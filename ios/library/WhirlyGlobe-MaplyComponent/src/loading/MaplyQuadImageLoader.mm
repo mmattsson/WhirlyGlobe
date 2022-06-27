@@ -203,6 +203,7 @@ using namespace WhirlyKit;
 }
 
 @end
+#endif //!MAPLY_MINIMAL
 
 @implementation MaplyRawPNGImageLoaderInterpreter
 {
@@ -221,39 +222,75 @@ using namespace WhirlyKit;
 {
     const auto __strong vc = loader.viewC;
     NSArray<id> *tileData = [loadReturn getTileData];
-    for (unsigned int ii=0;ii<[tileData count];ii++) {
-        if (loadReturn.isCancelled) {
+    for (unsigned int ii=0;ii<[tileData count];ii++)
+    {
+        if (loadReturn.isCancelled)
+        {
             return;
         }
+
         NSData *inData = [tileData objectAtIndex:ii];
         if (![inData isKindOfClass:[NSData class]])
+        {
             continue;
-        
-        unsigned int width=0,height=0;
-        
-        unsigned int err = 0;
+        }
+
+        const auto bytes = (const unsigned char *)[inData bytes];
+        const auto length = inData.length;
+        if (!bytes || !length)
+        {
+            continue;
+        }
+
+        unsigned int width = 0, height = 0, err = 0;
         int byteWidth = -1;
-        unsigned char *outData = RawPNGImageLoaderInterpreter(width,height,
-                                                              (const unsigned char *)[inData bytes],[inData length],
-                                                              valueMap,
-                                                              byteWidth, err);
+        std::string errStr;
+        const auto outData = RawPNGImageLoaderInterpreter(width, height, bytes, length,
+                                                          valueMap, byteWidth, err, &errStr);
 
-        if (err != 0) {
-            wkLogLevel(Warn, "Failed to read PNG in MaplyRawPNGImageLoaderInterpreter for tile %d: (%d,%d) frame = %d",loadReturn.tileID.level,loadReturn.tileID.x,loadReturn.tileID.y,loadReturn.frame);
-        } else {
-            NSData *retData = [[NSData alloc] initWithBytesNoCopy:outData length:width*height*byteWidth freeWhenDone:YES];
+        if (err != 0 || !outData)
+        {
+            wkLogLevel(Warn, "Failed to read PNG (err %d: %s) for %d:(%d,%d) frame %d",
+                       err, errStr.c_str(), loadReturn.tileID.level,
+                       loadReturn.tileID.x,loadReturn.tileID.y,loadReturn.frame);
+            continue;
+        }
 
+        if (byteWidth != 4)
+        {
+            // MaplyImageTile/ImageTile_iOS/TextureMTL don't currently handle anything but
+            // `components==4` correctly, leading to a crash when using `replaceRegion` to
+            // copy the image data into the texture.
+            wkLogLevel(Warn, "Ignoring non-RGBA PNG for %d:(%d,%d) frame %d",
+                       loadReturn.tileID.level, loadReturn.tileID.x,loadReturn.tileID.y,loadReturn.frame);
+            free(outData);
+            continue;
+        }
+
+        if (NSData *retData = [[NSData alloc] initWithBytesNoCopy:outData
+                                                           length:width*height*byteWidth
+                                                     freeWhenDone:YES])
+        {
             // Build a wrapper around the data and pass it on
-            MaplyImageTile *tileData = [[MaplyImageTile alloc] initWithRawImage:retData width:width height:height components:byteWidth viewC:vc];
-            if (tileData) {
+            if (MaplyImageTile *tileData = [[MaplyImageTile alloc] initWithRawImage:retData
+                                                                              width:width height:height
+                                                                         components:byteWidth
+                                                                              viewC:vc])
+            {
                 loadReturn->loadReturn->images.push_back(tileData->imageTile);
             }
+        }
+        else
+        {
+            // NSData won't free the data, so we need to.
+            free(outData);
         }
     }
 }
 
 @end
 
+#if !MAPLY_MINIMAL
 @implementation MaplyDebugImageLoaderInterpreter
 {
     NSObject<MaplyRenderControllerProtocol> * __weak viewC;

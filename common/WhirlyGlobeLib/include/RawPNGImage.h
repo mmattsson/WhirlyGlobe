@@ -31,6 +31,7 @@ extern unsigned char *RawPNGImageLoaderInterpreter(unsigned int &width,unsigned 
                                                    const unsigned char *data,size_t length,
                                                    const std::vector<int> &valueMap,
                                                    int &byteWidth,
-                                                   unsigned int &err);
+                                                   unsigned int &err,
+                                                   std::string *errStr);
 
 }
