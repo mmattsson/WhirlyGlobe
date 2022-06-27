@@ -1117,6 +1117,7 @@ BillboardDrawableBuilderRef SceneRendererMTL::makeBillboardDrawableBuilder(const
 #if !MAPLY_MINIMAL
     return std::make_shared<BillboardDrawableBuilderMTL>(name,scene);
 #else
+    // need a stub for the vtable
     return nullptr;
 #endif //!MAPLY_MINIMAL
 }

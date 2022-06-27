@@ -940,7 +940,6 @@
 		310570AF2863C72D00B50828 /* Platform.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B2A21F7A4820078A975 /* Platform.mm */; };
 		310570B52863C72D00B50828 /* RenderTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A78A92289DA3D008B0A1F /* RenderTarget.cpp */; };
 		310570BA2863C72D00B50828 /* MaplyRenderController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B127BFC2012ACA20099F405 /* MaplyRenderController.mm */; };
-		310570BD2863C72D00B50828 /* GlobeMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1921F79AE30078A975 /* GlobeMath.cpp */; };
 		310570C72863C72D00B50828 /* PerformanceTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B9B21FBA9E90078A975 /* PerformanceTimer.cpp */; };
 		310570CF2863C72D00B50828 /* LayerViewWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B82B5B71E82E2490095FB14 /* LayerViewWatcher.mm */; };
 		310570D42863C72D00B50828 /* MaplyVertexAttribute.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BE537D21D249A1200B60FAD /* MaplyVertexAttribute.mm */; };
@@ -1511,6 +1510,7 @@
 		31AC5BEF2869F68500500A3F /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AC5BEA2869F68500500A3F /* lodepng.cpp */; settings = {COMPILER_FLAGS = "-DLODEPNG_NO_COMPILE_ENCODER -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -DLODEPNG_NO_COMPILE_ERROR_TEXT -DLODEPNG_NO_COMPILE_CRC -DLODEPNG_NO_COMPILE_CPP"; }; };
 		31AC5BF4286A02F100500A3F /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AC5BF3286A02F100500A3F /* libz.1.tbd */; };
 		31AC5BF5286A070600500A3F /* MaplyQuadImageLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC3395221C6F230038A229 /* MaplyQuadImageLoader.mm */; };
+		31AC5BF9286A595600500A3F /* GlobeMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B1921F79AE30078A975 /* GlobeMath.cpp */; };
 		31C3A796282C63AE00E1F042 /* QuadTreeIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A795282C63AE00E1F042 /* QuadTreeIdentifier.h */; };
 		31C3A798282C645000E1F042 /* WhirlyEigen.h in Headers */ = {isa = PBXBuildFile; fileRef = 31C3A797282C645000E1F042 /* WhirlyEigen.h */; };
 		31CAB8DF2792126A00A5F744 /* GeographicLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31CAB8DE2792126A00A5F744 /* GeographicLib.cpp */; };
@@ -6105,7 +6105,6 @@
 				310570B52863C72D00B50828 /* RenderTarget.cpp in Sources */,
 				310570BA2863C72D00B50828 /* MaplyRenderController.mm in Sources */,
 				31AC5BCF2869F24800500A3F /* RawPNGImage.cpp in Sources */,
-				310570BD2863C72D00B50828 /* GlobeMath.cpp in Sources */,
 				310570C72863C72D00B50828 /* PerformanceTimer.cpp in Sources */,
 				310570CF2863C72D00B50828 /* LayerViewWatcher.mm in Sources */,
 				310570D42863C72D00B50828 /* MaplyVertexAttribute.mm in Sources */,
@@ -6131,6 +6130,7 @@
 				31AC5BBD286665FD00500A3F /* PJ_lcc.c in Sources */,
 				31AC5BA32866638E00500A3F /* pj_log.c in Sources */,
 				3105710F2863C72D00B50828 /* SceneRenderer.cpp in Sources */,
+				31AC5BF9286A595600500A3F /* GlobeMath.cpp in Sources */,
 				31AC5BAC2866645300500A3F /* pj_pr_list.c in Sources */,
 				310571172863C72D00B50828 /* MaplyTexture.mm in Sources */,
 				3105711F2863C72D00B50828 /* WGCoordinate.mm in Sources */,
