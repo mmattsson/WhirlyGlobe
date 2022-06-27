@@ -6250,7 +6250,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_LANGUAGE_REVISION = Metal20;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -6309,6 +6310,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACH_O_TYPE = staticlib;
+				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_LANGUAGE_REVISION = Metal20;
 				SDKROOT = iphoneos;
@@ -6362,7 +6364,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_LANGUAGE_REVISION = Metal21;
 				OTHER_CFLAGS = "";
@@ -6416,7 +6417,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
 				MTL_LANGUAGE_REVISION = Metal21;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -6496,8 +6496,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_LANGUAGE_REVISION = Metal21;
 				MTL_PREPROCESSOR_DEFINITIONS = "MAPLY_MINIMAL=1";
 				OTHER_CFLAGS = "";
@@ -6562,7 +6560,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_dylib;
-				MTL_COMPILER_FLAGS = "-fpreserve-invariance";
+				MTLLINKER_FLAGS = "-flto";
+				MTL_COMPILER_FLAGS = "$(inherited) -flto";
 				MTL_LANGUAGE_REVISION = Metal21;
 				MTL_PREPROCESSOR_DEFINITIONS = "MAPLY_MINIMAL=1";
 				OTHER_CFLAGS = "";

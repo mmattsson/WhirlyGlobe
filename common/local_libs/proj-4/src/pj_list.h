@@ -134,9 +134,7 @@ PROJ_HEAD(tissot, "Tissot Conic")
 PROJ_HEAD(tmerc, "Transverse Mercator")
 PROJ_HEAD(tpeqd, "Two Point Equidistant")
 PROJ_HEAD(tpers, "Tilted perspective")
-#endif //!MAPLY_MINIMAL
 PROJ_HEAD(ups, "Universal Polar Stereographic")
-#if !MAPLY_MINIMAL
 PROJ_HEAD(urm5, "Urmaev V")
 PROJ_HEAD(urmfps, "Urmaev Flat-Polar Sinusoidal")
 PROJ_HEAD(utm, "Universal Transverse Mercator (UTM)")

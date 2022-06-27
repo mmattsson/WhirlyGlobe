@@ -957,7 +957,7 @@ using namespace Eigen;
     if (!interactLayer)
         return;
     
-    if (!program) {
+    if (!program || !program->isValid()) {
         NSLog(@"Default shader setup:  Failed to create %@",inName);
         return;
     }
