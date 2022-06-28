@@ -2168,6 +2168,7 @@ static T* rawPtrFrom(id value)
     std::unique_ptr<ShapeInfo> cleanupInfo(rawPtrFrom<ShapeInfo>([argArray objectAtIndex:4]));
     const auto threadMode = (MaplyThreadMode)[[argArray objectAtIndex:5] intValue];
 
+#if !MAPLY_MINIMAL
     iosDictionary dictWrap(inDesc);
     ShapeInfo descInfo(dictWrap);
     if (inDesc)
@@ -2175,6 +2176,9 @@ static T* rawPtrFrom(id value)
         [self resolveInfoDefaults:inDesc info:&descInfo defaultShader:kMaplyDefaultTriangleShader];
         [self resolveDrawPriority:inDesc info:&descInfo drawPriority:kMaplyShapeDrawPriorityDefault offset:0];
     }
+#else
+    ShapeInfo descInfo;
+#endif //!MAPLY_MINIMAL
     ShapeInfo &shapeInfo = inInfo ? *inInfo : descInfo;
 
     // Need to convert shapes to the form the API is expecting

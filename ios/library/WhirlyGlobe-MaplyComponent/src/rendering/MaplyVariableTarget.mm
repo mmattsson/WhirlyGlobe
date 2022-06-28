@@ -89,13 +89,13 @@
             NSLog(@"Failed to add auxiliary render target in setupRectangle for MaplyVariableTarget.");
     }
 
+    MaplyShader *shader = _shader ? _shader : [theViewC getShaderByName:kMaplyShaderDefaultTriNoLighting];
+
     WhirlyKit::ShapeInfo shapeInfo;
     shapeInfo.color = [_color asRGBAColor];
     shapeInfo.drawPriority = _drawPriority;
     shapeInfo.zBufferRead = _zBuffer;
     shapeInfo.zBufferWrite = false;
-
-    MaplyShader *shader = _shader ? _shader : [theViewC getShaderByName:kMaplyShaderDefaultTriNoLighting];
     shapeInfo.programID = [shader getShaderID];
 
     _rectObj = [theViewC addShapes:@[rect] info:shapeInfo desc:nil mode:MaplyThreadCurrent];
