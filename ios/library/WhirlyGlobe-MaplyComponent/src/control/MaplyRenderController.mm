@@ -31,6 +31,7 @@
 #import "MaplyActiveObject_private.h"
 #import "MaplyRenderTarget_private.h"
 #import "WorkRegion_private.h"
+#import "MaplyBaseInteractionLayer_private.h"
 
 using namespace WhirlyKit;
 using namespace Eigen;
@@ -78,13 +79,13 @@ using namespace Eigen;
     // If the coordinate system hasn't been set up, we'll do a flat one
     if (!coordAdapter) {
         // Coordinate system and view that just pass coordinates through
-        coordSys = PassThroughCoordSystemRef(new PassThroughCoordSystem());
+        coordSys = std::make_shared<PassThroughCoordSystem>();
         Point3d ll(0.0,0.0,0.0),ur(size.width,size.height,0.0);
         Point3d scale(1.0,1.0,1.0);
         Point3d center = (ll+ur)/2.0;
-        genCoordAdapter = GeneralCoordSystemDisplayAdapterRef(new GeneralCoordSystemDisplayAdapter(coordSys.get(),ll,ur,center,scale));
+        genCoordAdapter = std::make_shared<GeneralCoordSystemDisplayAdapter>(coordSys.get(),ll,ur,center,scale);
         coordAdapter = genCoordAdapter.get();
-        flatView = Maply::FlatViewRef(new Maply::FlatView(coordAdapter));
+        flatView = std::make_shared<Maply::FlatView>(coordAdapter);
         visualView = flatView;
         Mbr extents;
         extents.addPoint(Point2f(ll.x(),ll.y()));
@@ -92,12 +93,11 @@ using namespace Eigen;
         flatView->setExtents(extents);
         flatView->setWindow(Point2d(size.width,size.height),Point2d(0.0,0.0));
     }
-    
+
     [self loadSetup];
-    
+
     [self loadSetup_scene:[[MaplyBaseInteractionLayer alloc] initWithView:visualView]];
-    [self setupShaders];
-        
+
     return self;
 }
 
@@ -441,16 +441,7 @@ using namespace Eigen;
 
 - (MaplyShader *__nullable)getShaderByName:(const NSString *__nonnull)name
 {
-    if (!interactLayer)
-        return nil;
-
-    @synchronized (interactLayer->shaders) {
-        for (MaplyShader *shader in interactLayer->shaders)
-            if (![name compare:shader.name])
-                return shader;
-    }
-    
-    return nil;
+    return [interactLayer getProgramByName:name];
 }
 
 // Merge the two dictionaries, add taking precidence into account, and then look for NSNulls
@@ -599,6 +590,17 @@ using namespace Eigen;
 
     if (auto wr = WorkRegion(interactLayer)) {
         return [interactLayer addShapes:shapes desc:desc mode:threadMode];
+    }
+    return nil;
+}
+
+- (MaplyComponentObject *__nullable)addShapes:(NSArray *__nonnull)shapes info:(ShapeInfo &)shapeInfo desc:(NSDictionary *__nullable)desc mode:(MaplyThreadMode)threadMode
+{
+    if ([shapes count] == 0)
+        return nil;
+
+    if (auto wr = WorkRegion(interactLayer)) {
+        return [interactLayer addShapes:shapes info:shapeInfo desc:desc mode:threadMode];
     }
     return nil;
 }

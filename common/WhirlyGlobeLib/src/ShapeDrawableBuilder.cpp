@@ -54,6 +54,16 @@ ShapeInfo::ShapeInfo(const Dictionary &dict)
     }
 }
 
+ShapeInfo::ShapeInfo(const ShapeInfo &info) :
+    BaseInfo(info),
+    color(info.color),
+    lineWidth(info.lineWidth),
+    insideOut(info.insideOut),
+    hasCenter(info.hasCenter),
+    center(info.center)
+{
+}
+
 ShapeDrawableBuilder::ShapeDrawableBuilder(CoordSystemDisplayAdapter *coordAdapter, SceneRenderer *sceneRender, const ShapeInfo &shapeInfo, bool linesOrPoints, const Point3d &center)
     : coordAdapter(coordAdapter), sceneRender(sceneRender), shapeInfo(shapeInfo), drawable(NULL), center(center)
 {

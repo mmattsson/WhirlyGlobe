@@ -33,6 +33,13 @@
 #import <WhirlyGlobe/MaplyActiveObject.h>
 #import <WhirlyGlobe/MaplyControllerLayer.h>
 
+#if defined(__cplusplus)
+namespace WhirlyKit
+{
+    struct ShapeInfo;
+}
+#endif //defined(__cplusplus)
+
 @class MaplyRemoteTileFetcher;
 
 /// Where we'd like an add to be executed.  If you need immediate feedback,
@@ -496,6 +503,10 @@ typedef NS_ENUM(NSInteger, MaplyRenderType) {
  @return Returns a MaplyComponentObject, which can be used to make modifications or delete the objects created.
  */
 - (MaplyComponentObject *__nullable)addShapes:(NSArray *__nonnull)shapes desc:(NSDictionary *__nullable)desc mode:(MaplyThreadMode)threadMode;
+
+#if defined(__cplusplus)
+- (MaplyComponentObject *__nullable)addShapes:(NSArray *__nonnull)shapes info:(WhirlyKit::ShapeInfo &)shapeInfo desc:(NSDictionary *__nullable)desc mode:(MaplyThreadMode)threadMode;
+#endif
 
 /**
  Add one or more MaplySticker objects to the current scene.

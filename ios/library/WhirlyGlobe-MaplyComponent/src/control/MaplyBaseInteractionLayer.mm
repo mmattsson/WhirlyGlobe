@@ -1163,15 +1163,20 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
 - (SimpleIdentity) getProgramID:(NSString *)name
 {
+    return [[self getProgramByName:name] getShaderID];
+}
+
+- (MaplyShader *__nullable)getProgramByName:(const NSString *__nonnull)name
+{
     @synchronized (shaders) {
         for (int ii=[shaders count]-1;ii>=0;ii--) {
             MaplyShader *shader = [shaders objectAtIndex:ii];
-            if ([shader.name isEqualToString:name])
-                return [shader getShaderID];
+            if (![name compare:shader.name]) {
+                return shader;
+            }
         }
     }
-    
-    return EmptyIdentity;
+    return nil;
 }
 
 #if !MAPLY_MINIMAL
@@ -2074,6 +2079,81 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 }
 #endif //!MAPLY_MINIMAL
 
+// Add shapes
+- (MaplyComponentObject *)addShapes:(NSArray *)shapes desc:(NSDictionary *)desc mode:(MaplyThreadMode)threadMode
+{
+    threadMode = [self resolveThreadMode:threadMode];
+
+    MaplyComponentObject *compObj = [[MaplyComponentObject alloc] initWithDesc:desc];
+    compObj->contents->underConstruction = true;
+
+    NSArray *argArray = @[shapes, compObj, [NSDictionary dictionaryWithDictionary:desc], [NSValue valueWithPointer:nullptr], @NO, @(threadMode)];
+    switch (threadMode)
+    {
+        case MaplyThreadCurrent:
+            [self addShapesRun:argArray];
+            break;
+        case MaplyThreadAny:
+            [self performSelector:@selector(addShapesRun:) onThread:layerThread withObject:argArray waitUntilDone:NO];
+            break;
+    }
+    
+    return compObj;
+}
+
+- (MaplyComponentObject *)addShapes:(NSArray *)shapes
+                               info:(ShapeInfo &)shapeInfo
+                               desc:(NSDictionary * __nullable)inDesc
+                               mode:(MaplyThreadMode)threadMode
+{
+    threadMode = [self resolveThreadMode:threadMode];
+
+    MaplyComponentObject *compObj = [[MaplyComponentObject alloc] init];
+    compObj->contents->underConstruction = true;
+
+    if (shapeInfo.programID == EmptyIdentity)
+    {
+        shapeInfo.programID = [self getProgramID:kMaplyDefaultTriangleShader];
+    }
+    if (shapeInfo.drawPriority == 0)
+    {
+        shapeInfo.drawPriority = kMaplyShapeDrawPriorityDefault;
+    }
+
+    switch (threadMode)
+    {
+        case MaplyThreadCurrent:
+            [self addShapesRun:@[shapes, compObj, [NSNull null],
+                                 [NSValue valueWithPointer:&shapeInfo],
+                                 [NSValue valueWithPointer:nullptr],
+                                 @(threadMode)]];
+            break;
+        case MaplyThreadAny:
+        {
+            // Need to make a copy to pass across threads.
+            // Note that this will leak memory if the target thread is terminated
+            // before the message is processed so... don't do that.
+            NSValue *info = [NSValue valueWithPointer:new ShapeInfo(shapeInfo)];
+            NSArray *argArray = @[shapes, compObj, [NSNull null], info, info, @(threadMode)];
+            [self performSelector:@selector(addShapesRun:) onThread:layerThread withObject:argArray waitUntilDone:NO];
+            break;
+        }
+    }
+    
+    return compObj;
+}
+
+static id maybe(id obj)
+{
+    return ([obj isKindOfClass:[NSNull class]]) ? nil : obj;
+}
+
+template <typename T>
+static T* rawPtrFrom(id value)
+{
+    return (T*)((NSValue*)maybe(value)).pointerValue;
+}
+
 // Called in the layer thread
 - (void)addShapesRun:(NSArray *)argArray
 {
@@ -2083,13 +2163,19 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     const auto coordAdapter = scene->getCoordAdapter();
     NSArray *shapes = [argArray objectAtIndex:0];
     MaplyComponentObject *compObj = [argArray objectAtIndex:1];
-    NSDictionary *inDesc = [argArray objectAtIndex:2];
-    const auto threadMode = (MaplyThreadMode)[[argArray objectAtIndex:3] intValue];
+    NSDictionary *inDesc = maybe([argArray objectAtIndex:2]);
+    ShapeInfo* inInfo = (ShapeInfo*)((NSValue*)maybe([argArray objectAtIndex:3])).pointerValue;
+    std::unique_ptr<ShapeInfo> cleanupInfo(rawPtrFrom<ShapeInfo>([argArray objectAtIndex:4]));
+    const auto threadMode = (MaplyThreadMode)[[argArray objectAtIndex:5] intValue];
 
     iosDictionary dictWrap(inDesc);
-    ShapeInfo shapeInfo(dictWrap);
-    [self resolveInfoDefaults:inDesc info:&shapeInfo defaultShader:kMaplyDefaultTriangleShader];
-    [self resolveDrawPriority:inDesc info:&shapeInfo drawPriority:kMaplyShapeDrawPriorityDefault offset:0];
+    ShapeInfo descInfo(dictWrap);
+    if (inDesc)
+    {
+        [self resolveInfoDefaults:inDesc info:&descInfo defaultShader:kMaplyDefaultTriangleShader];
+        [self resolveDrawPriority:inDesc info:&descInfo drawPriority:kMaplyShapeDrawPriorityDefault offset:0];
+    }
+    ShapeInfo &shapeInfo = inInfo ? *inInfo : descInfo;
 
     // Need to convert shapes to the form the API is expecting
     std::vector<Shape *> ourShapes;
@@ -2098,6 +2184,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
 
     // automatic cleanup
     std::vector<std::unique_ptr<Shape>> shapeOwner;
+    shapeOwner.reserve(shapes.count);
     
     for (MaplyShape *shape in shapes)
     {
@@ -2167,7 +2254,7 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
         }
         else
 #endif //!MAPLY_MINIMAL
-            if ([shape isKindOfClass:[MaplyShapeRectangle class]])
+        if ([shape isKindOfClass:[MaplyShapeRectangle class]])
         {
             const auto rc = (MaplyShapeRectangle *)shape;
             auto rect = (Rectangle *)[rc asWKShape:inDesc];
@@ -2250,28 +2337,6 @@ static inline bool dictBool(const NSDictionary *dict, const NSString *key, bool 
     compManager->addComponentObject(compObj->contents, changes);
 
     [self flushChanges:changes mode:threadMode];
-}
-
-// Add shapes
-- (MaplyComponentObject *)addShapes:(NSArray *)shapes desc:(NSDictionary *)desc mode:(MaplyThreadMode)threadMode
-{
-    threadMode = [self resolveThreadMode:threadMode];
-
-    MaplyComponentObject *compObj = [[MaplyComponentObject alloc] initWithDesc:desc];
-    compObj->contents->underConstruction = true;
-
-    NSArray *argArray = @[shapes, compObj, [NSDictionary dictionaryWithDictionary:desc], @(threadMode)];
-    switch (threadMode)
-    {
-        case MaplyThreadCurrent:
-            [self addShapesRun:argArray];
-            break;
-        case MaplyThreadAny:
-            [self performSelector:@selector(addShapesRun:) onThread:layerThread withObject:argArray waitUntilDone:NO];
-            break;
-    }
-    
-    return compObj;
 }
 
 #if !MAPLY_MINIMAL
