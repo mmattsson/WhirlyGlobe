@@ -1021,6 +1021,9 @@ typedef NS_ENUM(NSInteger, MaplyRenderType) {
 /// Initialize as an offline renderer with a map view
 - (instancetype __nullable)initWithSize:(CGSize)size mode:(MaplyRenderType)renderType mapView:(int)mapView;
 
+/// Set center and height.  No bounds checking.
+- (void)setPosition:(MaplyCoordinate)newPos height:(float)height;
+
 /// If set up in offline mode, this is how we draw
 - (UIImage * __nullable)renderToImage;
 

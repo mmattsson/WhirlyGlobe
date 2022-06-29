@@ -301,6 +301,28 @@ using namespace Eigen;
     return screenDrawPriorityOffset;
 }
 
+- (void)setPosition:(MaplyCoordinate)newPos height:(float)height
+{
+    visualView->cancelAnimation();
+
+    const auto geo = GeoCoord(newPos.x, newPos.y);
+
+    if (auto mv = dynamic_cast<Maply::MapView*>(visualView.get()))
+    {
+        const auto adapter = visualView->getCoordAdapter();
+        Point3d loc = adapter->getCoordSystem()->geographicToLocal3d(geo);
+        loc.z() = height;
+        mv->setLoc(loc);
+    }
+#if !MAPLY_MINIMAL
+    else if (auto gv = dynamic_cast<WhirlyGlobe::GlobeView*>(visualView.get()))
+    {
+        gv->setRotQuat(gv->makeRotationToGeoCoord(geo, true));
+        gv->setHeightAboveGlobe(height);
+    }
+#endif //!MAPLY_MINIMAL
+}
+
 - (UIImage *)renderToImage
 {
     if (!sceneRenderer)
