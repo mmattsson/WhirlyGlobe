@@ -134,7 +134,7 @@ void PerformanceTimer::log(double min)
     {
         if (entry.numRuns > 0 && entry.maxDur >= min)
         {
-            sprintf(line,"%s: min, max, mean = (%.3f, %.3f, %.4f) ms, %d reports",
+            snprintf(line,sizeof(line),"%s: min, max, mean = (%.3f, %.3f, %.4f) ms, %d reports",
                     entry.name.c_str(),1000*entry.minDur,1000*entry.
                     maxDur,1000*entry.avgDur / entry.numRuns, entry.numRuns);
             report(line);
@@ -145,7 +145,7 @@ void PerformanceTimer::log(double min)
         const CountEntry &entry = countEntry.second;
         if (entry.numRuns > 0 && entry.maxCount > 0)
         {
-            sprintf(line,"%s: min, max, mean (%d, %d, %.3f), %d reports",
+            snprintf(line,sizeof(line),"%s: min, max, mean (%d, %d, %.3f), %d reports",
                     entry.name.c_str(),entry.minCount,entry.maxCount,
                     (float)entry.avgCount / (float)entry.numRuns,entry.numRuns);
             report(line);
